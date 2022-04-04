@@ -3,71 +3,73 @@ package cn.sjw.controller;
 import cn.sjw.bean.Mag;
 import cn.sjw.pojo.User;
 import cn.sjw.service.UserService;
-import cn.sjw.util.UploadFileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class UserController {
     @Autowired
     private UserService userService;
-    @GetMapping("/user")
-    public void gptoPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        request.getRequestDispatcher("/WEB-INF/jsp/user.jsp").forward(request,response);
-
-    }
 
     /**
-     *      文件上传
-     *
-     * @param user  将普通字段的数据封装到 User
-     * @param file
-     * @param request
+     *  注册
+     * @param user  要校验的数据  要加 @Valid注解
+     * @param result  校验的结果
      * @return
      */
     @ResponseBody
-    @PostMapping("/user")
-    public Mag addUser(User user, @RequestParam("file") MultipartFile file, HttpServletRequest request) throws IOException {
-if (!file.isEmpty()) {
-    //      获取文件上传的路径
-    String realPath = request.getServletContext().getRealPath("/upload");
-//      获取文件名
-    String filename = file.getOriginalFilename();
-    //判断文件的大小和类型
-    if (!UploadFileUtils.isImageFile(filename)) {
-        return Mag.fail().add("info", "文件类型不匹配！");
-    }
-//    给上传文件重命名
-    filename = UploadFileUtils.imgReName(filename);
- // 创建文件实例            
-     File filePath = new File(realPath, filename);
-     if (!filePath.getParentFile().exists()) {
-     filePath.getParentFile().mkdirs();
-     System.out.println("创建目录" + filePath);
-     }
-     user.setPic("upload/"+filename);
-
-    //写入文件 将上传的文件复制到目录
-    file.transferTo(filePath);
-}
-int i=userService.addUser(user);
-if (i>0){
-    return Mag.success().add("info","用户添加成功！");
-}
-return Mag.fail();
+    @PutMapping("/add")
+    public Mag addUser(@Valid User user, BindingResult result){
+        //创建一个错误的map集合
+        Map<String,Object> errorMap = new HashMap<String,Object>();
+        if(result.hasErrors()){
+            List<FieldError> errors = result.getFieldErrors();
+            for (FieldError error : errors) {
+                System.out.println("error fildes："+error.getField());
+                System.out.println("error info："+error.getDefaultMessage());
+                //将字段名称作为Key 错误提示信息作为 value 存入map
+                errorMap.put(error.getField(),error.getDefaultMessage());
+            }
+            //将错误信息的map加入到返回的Msg中返回给页面
+            return Mag.fail().add("errorMap",errorMap);
+        }else {
+            int i =userService.addUser(user);
+            return Mag.success();
+        }
 
     }
+
+    //登陆
+    @PostMapping("/hello")
+    public String selectUseer(User user){
+
+//                HttpSession session = request.getSession();
+                User user1 = userService.selectUser(user);
+            if ( user1!=null ){
+                if(user1.getUserName()!=null && user1.getPassward()!=null){
+                    if(user1.getQuanXian()==1){
+                          return "shenhe";
+                    }else{
+                          return "ruanjian";
+                    }
+                }
+            }else {
+             return "index";
+            }
+        return "index";
+    }
+
+
+
 
 }

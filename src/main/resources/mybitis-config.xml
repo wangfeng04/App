@@ -14,8 +14,10 @@
         </plugin>
     </plugins>
     <mappers>
-        <mapper class="cn.sjw.mapper.BooksMapper"/>
         <mapper class="cn.sjw.mapper.UserMapper"/>
+        <mapper class="cn.sjw.mapper.RuanJianMapper"/>
+        <mapper class="cn.sjw.mapper.HistroryRJMapper"/>
+        <mapper class="cn.sjw.mapper.FenleiMapper"/>
     </mappers>
 
 </configuration>

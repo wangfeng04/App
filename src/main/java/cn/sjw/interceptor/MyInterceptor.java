@@ -18,7 +18,7 @@ public class MyInterceptor implements HandlerInterceptor {
         if ("admin".equals(uName) && "admin".equals(pwd)){
                 return true;
         }
-        request.getRequestDispatcher("WEB-INF/jsp/login.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/jsp/.jsp").forward(request,response);
         return false;
     }
 

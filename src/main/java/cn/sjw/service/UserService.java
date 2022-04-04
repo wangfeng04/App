@@ -3,5 +3,8 @@ package cn.sjw.service;
 import cn.sjw.pojo.User;
 
 public interface UserService {
-   int  addUser(User user);
+    //注册用户
+    int addUser(User user);
+    //登陆
+    User selectUser(User user);;
 }
