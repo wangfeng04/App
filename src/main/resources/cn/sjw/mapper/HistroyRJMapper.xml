@@ -11,15 +11,14 @@
         <result property="APKName" column="APKname"/>
         <result property="bbH" column="bbH"/>
         <result property="appDetail" column="appDetail"/>
-        <result property="LuJin" column="luJin"/>
+        <result property="LuJin" column="LuJin"/>
         <result property="appSize" column="appSize"/>
         <association property="user" javaType="cn.sjw.pojo.User">
             <id property="id" column="id"/>
-            <result property="userName" column="zhuantai"/>
+            <result property="userName" column="kaifaze"/>
         </association>
         <association property="zhuanTai2" javaType="cn.sjw.pojo.ZhuanTai2">
             <id property="id" column="id"/>
-            <result property="tai1Id" column="zhuantai"/>
             <result property="tai2" column="Zhuantai"/>
         </association>
 
@@ -43,17 +42,21 @@
 <!--</select>-->
     <!--   根据  Appid 查询软件历史版本信息  -->
 <select id="selectHistrory" resultMap="HistroyMap">
-SELECT id,appid,appName,`APKName`,`appSize`,
-(
-	SELECT `userNamee`
-	FROM  `user`
-	WHERE   histroyrj.kaifazId=user.id
-)AS kaifaze,(
-	SELECT `tai2`
-	FROM  `zhuantai2`
-	WHERE histroyrj.zhantai=zhuantai2.tai1Id
-)AS zhuantai,`bbH`,`appDetail`,`LuJin`
-FROM  `histroyrj`;
-WHERE  appid=#{appid}
+SELECT h.id id,
+h.appid appid,
+h.appName appName,
+h.APKName APKName,
+h.appSize appSize,
+u.`userName` kaifaze,
+z.tai2  zhuantai,
+h.bbH bbH,
+h.appDetail appDetail,
+h.LuJin LuJin
+FROM  `histroyrj` h,`user` u ,`zhuantai2` z
+WHERE
+        h.kaifazId=u.id
+  AND   h.zhantai=z.tai1Id
+  AND	h.zhantai=z.tai1Id
+  AND   h.appid=#{id}
     </select>
 </mapper>

@@ -6,7 +6,7 @@
     <resultMap id="RuanJiamMap" type="cn.sjw.pojo.RJxxDTO">
         <id property="id"  column="id"/>
         <result property="appName" column="appName"/>
-        <result property="APKName" column="APKname"/>
+        <result property="APKName" column="APKName"/>
         <result property="appSize" column="appSize"/>
         <result property="bbH" column="bbH"/>
         <result property="xzCS" column="xzCS"/>
@@ -33,44 +33,54 @@
             <result property="leixinName" column="threefenli"/>
         </association>
         <association property="zhuanTai" javaType="cn.sjw.pojo.ZhuanTai">
-<result property="tai" column="zhuantai"/>
+            <id property="id" column="id"/>
+           <result property="tai" column="tai"/>
         </association>
     </resultMap>
 <!-- 查询所有软件信息 -->
 <select id="queryRJ"  resultMap="RuanJiamMap">
-SELECT   id,`appName`,`APKName`,`appSize`,(
-SELECT `userName` FROM  `user`
-WHERE   ruanjian.kaifazId=user.id)AS kaifaze,(
-SELECT `pintai` FROM  `pintai`
-WHERE   ruanjian.appPinTai=pintai.id  )AS pintai,(
-SELECT `leixinName` FROM  `fenlei1`
-WHERE   ruanjian.onefenLei=fenlei1.f1id )AS onefenLei,(
-SELECT `leixinName` FROM  `fenlei2`
-WHERE   ruanjian.twofenlei=fenlei2.f2id )AS twofenlei,(
-SELECT `leixinName` FROM  `fenlei3`
-WHERE   ruanjian.threefenli=fenlei3.f3id )AS threefenli,(
-SELECT `tai` FROM  `zhuantai`
-WHERE ruanjian.tai=zhuantai.id )AS zhuantai,`xzCS`,`bbH`,`appDetail`,`LuJin`
-FROM  `ruanjian`
+SELECT
+r.id id,
+r.appName appName,
+r.APKName APKName,
+r.appSize appSize,
+u.userName  kaifaze,
+p.pintai pintai,
+f1.leixinName onefenLei,
+f2.leixinName twofenlei,
+f3.`leixinName` threefenli,
+z.tai tai,r.xzCS xzCS,
+r.bbH bbH,r.appDetail appDetail,r.LuJin LuJin
+FROM  `ruanjian` r,`user` u,`pintai` p ,`fenlei1` f1,`fenlei2` f2,`fenlei3` f3,`zhuantai` z
+WHERE  r.kaifazId=u.id
+     AND r.appPinTai=p.id
+     AND r.onefenLei=f1.f1id
+     AND r.twofenlei=f2.f2id
+     AND r.threefenli=f3.f3id
+     AND r.tai=z.id
 </select>
 <!--  根据id查询软件信息  -->
     <select id="queryRJxx" resultMap="RuanJiamMap" >
-SELECT id,`appName`,`APKName`,`appSize`,(
-SELECT `userName` FROM  `user`
-WHERE   ruanjian.kaifazId=user.id)AS kaifaze,(
-SELECT `pintai` FROM  `pintai`
-WHERE   ruanjian.appPinTai=pintai.id  )AS pintai,(
-SELECT `leixinName` FROM  `fenlei1`
-WHERE   ruanjian.onefenLei=fenlei1.f1id )AS onefenLei,(
-SELECT `leixinName` FROM  `fenlei2`
-WHERE   ruanjian.twofenlei=fenlei2.f2id )AS twofenlei,(
-SELECT `leixinName` FROM  `fenlei3`
-WHERE   ruanjian.threefenli=fenlei3.f3id )AS threefenli,(
-SELECT `tai` FROM  `zhuantai`
-WHERE ruanjian.tai=zhuantai.id )AS zhuantai,`xzCS`,`bbH`,`appDetail`,`LuJin`
-FROM  `ruanjian`
-where id=#{id}
-
+SELECT
+r.id id,
+r.appName appName,
+r.APKName APKName,
+r.appSize appSize,
+u.userName  kaifaze,
+p.pintai pintai,
+f1.leixinName onefenLei,
+f2.leixinName twofenlei,
+f3.`leixinName` threefenli,
+z.tai tai,r.xzCS xzCS,
+r.bbH bbH,r.appDetail appDetail,r.LuJin LuJin
+FROM  `ruanjian` r,`user` u,`pintai` p ,`fenlei1` f1,`fenlei2` f2,`fenlei3` f3,`zhuantai` z
+WHERE  r.kaifazId=u.id
+     AND r.appPinTai=p.id
+     AND r.onefenLei=f1.f1id
+     AND r.twofenlei=f2.f2id
+     AND r.threefenli=f3.f3id
+     AND r.tai=z.id
+     AND r.id=#{id}
     </select>
 <!--  根据id修改软件信息   的 同时给 软件历史信息表 添加记录   -->
     <update id="updateRuanJian" parameterType="RuanJian" >

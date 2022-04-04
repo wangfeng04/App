@@ -26,16 +26,16 @@ public class RuanJianController {
 
     //    查询所有软件信息
     @ResponseBody
-    @PostMapping("/list")
+    @GetMapping("/list")
     public Mag ruanJianList(@RequestParam(value = "pageNum",defaultValue = "1") Integer pn){
         if(pn<1){
             pn = 1;
         }
         PageHelper.startPage(pn,5);
         List<RuanJian> ruanJians = ruanJianService.queryRJ();
-        PageInfo<RuanJian> rjPageInfo =new PageInfo<RuanJian>(ruanJians,5);
+        PageInfo<RuanJian> pageInfo =new PageInfo<RuanJian>(ruanJians,5);
         //将分页信息传入自定义类的returnData
-        return Mag.success().add("rjPageInfo",rjPageInfo);
+        return Mag.success().add("pageInfo",pageInfo);
     }
 
     //根据 ID 查询软件及其历史版本信息
