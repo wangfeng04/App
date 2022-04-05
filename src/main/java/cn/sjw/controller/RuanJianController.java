@@ -40,13 +40,25 @@ public class RuanJianController {
 
     //根据 ID 查询软件及其历史版本信息
     @ResponseBody
-    @GetMapping("/ruanJian/{id}")
+    @PostMapping("/ruanJ/{id}")
     public Mag getRuanJian(@PathVariable("id") Integer id){
         RuanJian ruanJian= ruanJianService.queryRJxx(id);
         List<HistroryRJ> histroryRJS=histroryRJService.selectHistrory(id);
+
+        //ruanJian传不到前端
         return Mag.success().add("ruanJian",ruanJian).add("histroryRJS",histroryRJS);
     }
 
-
+//根据 ID 修改软件状态
+@ResponseBody
+@PostMapping("/rj")
+   public Mag getBooks(@RequestParam("zhuan")  Integer zhuan,@RequestParam("id")  Integer id){
+       int i = ruanJianService.updateZhuantai(id,zhuan);
+       if (i>0){
+           return Mag.success();
+       }else {
+           return  Mag.fail();
+       }
+   }
 
 }

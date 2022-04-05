@@ -119,10 +119,10 @@ DELETE  FROM ruanjian WHERE ruanjian.id=#{id}
     </delete>
 <!--    根据id修改软件状态-->
 <update id="updateZhuantai">
-    UPDATE
+UPDATE
     ruanjian
 SET
-    tai=#{tai},
+    tai=#{tai}
 WHERE
     id = #{id}
 </update>

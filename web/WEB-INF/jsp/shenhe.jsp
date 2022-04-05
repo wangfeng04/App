@@ -15,22 +15,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css"  rel="styleSheet" href="http://localhost:8080/ssm/dist/css/bootstrap.css"/>
     <style type="text/css">
-        table tbody tr td{
+        .table tbody tr td{
             overflow: hidden;
             text-overflow:ellipsis;
             white-space: nowrap;
 
         }
-        h1{
-            position:relative;
-        }
+
     </style>
 </head>
 <body>
+<!-- editModal -->
+<div class="modal fade" id="editModal" role="dialog" aria-labelledby="myModalLabel2">    
+    <div class="modal-dialog" role="document">        
+        <div class="modal-content">
+            <div class="modal-header">                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>               
+                <h4 class="modal-title" id="myModalLabel2">软件信息</h4>            
+            </div>    
+            <div class="container table-responsive">
+                    <table style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;" class=" table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
+                    <tr style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;" >
+                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">软件名称</th>
+                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">APK名称</th>
+                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">软件大小</th>
+                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">当前状态</th>
+                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">下载次数</th>
+                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">版本号</th>
+                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">软件介绍</th>
+
+                    </tr>
+                    <tbody id="hisrj_table" style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;" >
+
+                    </tbody>
+                </table> 
+            </div>     
+            <div class="modal-body">                
+                <form name="addForm" id="updateForm" method="post">
+                    <div class="form-group">
+                        <label for="edit_appName">软件名称:</label>
+                        <input type="text" class="form-control" name="appName" id="edit_appName" placeholder="软件名称">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_APKName">APK名称:</label>
+                        <input type="text" class="form-control" name="APKName" id="edit_APKName" placeholder="APK名称">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_appSize">软件大小:</label>
+                        <input type="text" class="form-control" name="bookCounts" id="edit_appSize" placeholder="软件大小">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_tai">状态:</label>
+                        <input type="text" class="form-control" name="tai" id="edit_tai" placeholder="状态">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_pintai">所属平台:</label>
+                        <input type="text" class="form-control" name="pintai" id="edit_pintai" placeholder="所属平台">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_kaifaze">开发者:</label>
+                        <input type="text" class="form-control" name="onefenLei" id="edit_kaifaze" placeholder="下载次数">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_fenLei">分类:</label>
+                        <input type="text" class="form-control" name="onefenLei" id="edit_fenLei" placeholder="下载次数">
+                        <span class="help-block"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_bbH">版本号:</label>
+                        <input type="text" class="form-control" name="bbH" id="edit_bbH" placeholder="版本号">
+                        <span class="help-block"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit_appDetail">软件简介:</label>
+                        <input type="text" class="form-control" name="appDetail" id="edit_appDetail" placeholder="软件简介">
+                        <span class="help-block"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_LuJin">文件上传:</label>
+                        <input type="text" class="form-control" name="LuJin" id="edit_LuJin" placeholder="文件上传">
+                        <span class="help-block"></span>
+                    </div>
+                </form>        
+            </div>          
+            <div class="modal-footer">                
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>                
+                <button type="button" class="btn btn-primary" id="updateSubmit">更新</button>            
+            </div>        
+        </div>    
+    </div>
+</div>
+
+
+
+
+
 
 <div class="dropdown">
-    <a id="dLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-     <h3 class="clear"> 分类</h3>
+    <a id="dLabel"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+     <h3 class="clear"  class="col-lg-5"> 分类</h3>
         <span class="caret"></span>
     </a>
     <a id="d1Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +142,7 @@
 
     </ul>
     <a id="d3Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <h3 class="clear:none"> 三级分类</h3>
+        三级分类
         <span class="caret"></span>
     </a>
 
@@ -63,7 +155,7 @@
 
 <%out.print(request.getContextPath());%>
 
-<div><h1 class="col-lg-6">软件信息审核列表</h1></div>
+<div><h1 class="col-lg-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;软件信息审核列表</h1></div>
 <div class="container table-responsive">
 
  <table class="table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
@@ -124,7 +216,7 @@
     }
 
     //构建软件信息列表
-    function build_rj_table(data) {
+function build_rj_table(data) {
         //清空历史数据
         $("#rj_table").empty();
         //获取分页信息
@@ -147,14 +239,18 @@
             var LuJin_td= $("<td></td>").append(item.luJin);
 
             //操作列的td
-            //编辑按钮
-            var edit_btn = $("<button></button>").addClass("btn btn-sm btn-primary edit_btn").attr("data-id",item.id).attr("data-pn",data.returnData.pageInfo.pageNum)
+            //查看软件信息
+            var eyes_btn = $("<button></button>").addClass("btn btn-sm btn-primary eyes_btn").attr("data-id",item.id).attr("data-pn",data.returnData.pageInfo.pageNum)
+                .append($("<span></span>").addClass("glyphicon glyphicon-tasks")).append("&nbsp;  查看")
+
+            //审核通过按钮
+            var edit_btn = $("<button></button>").addClass("btn btn-sm btn-primary edit_btn").attr("data-id",item.id).attr("zt",2).attr("data-pn",data.returnData.pageInfo.pageNum)
                 .append($("<span></span>").addClass("glyphicon glyphicon-ok")).append("&nbsp;  通过")
-            //删除按钮
-            var del_btn = $("<button></button>").addClass("btn btn-sm btn-danger del_btn").attr("data-id",item.id).attr("data-pn",data.returnData.pageInfo.pageNum)
+            //审核  不通过按钮
+            var del_btn = $("<button></button>").addClass("btn btn-sm btn-danger del_btn").attr("data-id",item.id).attr("zt",3).attr("data-pn",data.returnData.pageInfo.pageNum)
                 .append($("<span></span>").addClass("glyphicon glyphicon-remove")).append("&nbsp;不通过")
             //将操作按钮放入操作的td列
-            var ac =$("<td></td>").append(edit_btn).append(del_btn)
+            var ac =$("<td></td>").append(eyes_btn).append(edit_btn).append(del_btn)
 
             //将4个td 放入一个tr里
             var tr = $("<tr></tr>")
@@ -243,6 +339,121 @@
     function creatClick(obj,pn) {
         obj.click(function () {
             getPageNums(pn)
+        })
+    }
+
+
+    //修改软件状态为通过
+    $(document).on("click",".edit_btn",function () {
+        //保存当前页码
+       var p=$(this).attr("data-pn");
+
+        //根据 ID 查询图书信息
+        $.ajax({
+            url:"${APP_PATH}/rj",
+            method: "POST",
+            data: { // 提交数据
+                "id": $(this).attr("data-id"), // 前者为字段名，后者为数据
+                "zhuan":$(this).attr("zt")
+            },
+            success:function (data) {
+                console.log(data)
+                alert("审核通过")
+                getPageNums(p)
+            }
+
+        })
+    })
+    //修改软件状态为  不通过
+    $(document).on("click",".del_btn",function () {
+        //保存当前页码
+        var p=$(this).attr("data-pn");
+        //根据 ID 查询图书信息
+        $.ajax({
+            url:"${APP_PATH}/rj",
+            method: "POST",
+            data: { // 提交数据
+                "id": $(this).attr("data-id"), // 前者为字段名，后者为数据
+                "zhuan":$(this).attr("zt")
+            },
+            success:function (data) {
+                console.log(data)
+                alert("审核未通过")
+                getPageNums(p)
+            }
+
+        })
+    })
+
+    //根据 id 查看软件信息
+    $(document).on("click",".eyes_btn",function () {
+        //保存当前页码
+        $("#pn").val($(this).attr("data-pn"));
+
+        $("#editModal").modal({
+            backdrop: "static",
+            show:true
+        })
+
+        //根据 ID 查询图书信息
+        $.ajax({
+            url:"${APP_PATH}/ruanJ/"+$(this).attr("data-id"),
+            method: "post",
+            success:function (data) {
+                console.log(data)
+                var rj=data.returnData.ruanJian;
+                $("#edit_appName").val(rj.appName);
+                $("#edit_APKName").val(rj.apkname);
+                $("#edit_appSize").val(rj.appSize+" MB");
+                $("#edit_pintai").val(rj.pintai.pintai);
+                $("#edit_detail").val(rj.fenLei1.leixinName+"-"+rj.fenLei2.leixinName+"-"+rj.fenLei3.leixinName);
+                $("#edit_tai").val(rj.zhuanTai.tai);
+                $("#edit_kaifaze").val(rj.user.userName);
+                $("#edit_xzCS").val(rj.xzCS);
+                $("#edit_bbH").val(rj.bbH);
+                $("#edit_appDetail").val(rj.appDetail);
+                $("#edit_LuJin").val(rj.luJin);
+                build_hisrj_table(data)
+            }
+
+        })
+    })
+    function build_hisrj_table(data) {
+        //清空历史数据
+        $("#rj_table").empty();
+        //获取分页信息
+        var hisrj=data.returnData.histroryRJS;
+        console.log(hisrj)
+
+        $.each(hisrj,function (index,item) {
+            //构建 td 存放数据
+            var hisappName_td = $("<td></td>").append(item.appName);
+            var hisAPKName_td = $("<td></td>").append(item.apkname);
+            var hisappSize_td = $("<td></td>").append(item.appSize+" MB");
+            var hispintai_td = $("<td></td>").append(item.pintai.pintai);
+            var hisfenLei_td = $("<td></td>").append(item.fenLei1.leixinName+"-"+item.fenLei2.leixinName+"-"+item.fenLei3.leixinName);
+            var hiszhuantai_td =$("<td></td>").append(item.zhuanTai.tai);
+            var hiskaifaze_td = $("<td></td>").append(item.user.userName);
+            var hisbbH_td = $("<td></td>").append(item.bbH);
+            var hisappDetail_td = $("<td></td>").append(item.appDetail);
+            var hisLuJin_td= $("<td></td>").append($("<a></a>").attr("herf",item.luJin).append(item.luJin));
+
+            //将4个td 放入一个tr里
+            var tr = $("<tr></tr>")
+                .append(hisappName_td)
+                .append(hisAPKName_td)
+                .append(hisappSize_td)
+                .append(hiskaifaze_td)
+                .append(hisfenLei_td)
+                .append(hispintai_td)
+                .append(hiszhuantai_td)
+                .append(xzCS_td)
+                .append(hisbbH_td)
+                .append(hisappDetail_td)
+                .append(hisLuJin_td).addClass()
+
+            //将tr添加至tbody
+            tr.appendTo($("#hisrj_table"))
         })
     }
 
