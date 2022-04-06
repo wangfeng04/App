@@ -14,6 +14,7 @@ import java.util.List;
 public class FenLeiServiceImpl implements FenLeiService {
     @Autowired
     private FenleiMapper fenleiMapper;
+
     /**
      * 一级分类   下拉框  选择时传回 该分类的id
      */
@@ -40,6 +41,6 @@ public class FenLeiServiceImpl implements FenLeiService {
      */
     @Override
     public List<FenLei3> queryF3(int f1id, int f2id) {
-        return fenleiMapper.queryF3(f1id,f2id);
+        return fenleiMapper.queryF3(f1id, f2id);
     }
 }

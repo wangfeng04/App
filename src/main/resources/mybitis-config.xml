@@ -6,9 +6,9 @@
     <settings>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
-<typeAliases>
-    <package name="cn.sjw.pojo"/>
-</typeAliases>
+    <typeAliases>
+        <package name="cn.sjw.pojo"/>
+    </typeAliases>
 
     <plugins>
         <plugin interceptor="com.github.pagehelper.PageInterceptor">

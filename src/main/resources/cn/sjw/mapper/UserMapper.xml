@@ -3,13 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.sjw.mapper.UserMapper">
-<!--    注册开发者用户-->
+    <!--    注册开发者用户-->
     <insert id="addUser" parameterType="User">
-insert  user(userName,passward)
+        insert user(userName,passward)
         values (#{userName},#{passward});
-</insert>
+    </insert>
 
     <select id="selectUser" parameterType="User" resultType="User">
-     select * from user where userName= #{userName} and passward=#{passward};
-</select>
+        select * from user where userName= #{userName} and passward=#{passward};
+    </select>
 </mapper>

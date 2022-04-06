@@ -67,8 +67,8 @@ public class RuanJianServiceImpl implements RuanJianService {
      * @param id
      */
     @Override
-    public int updateZhuantai(int id,int tai) {
-        return ruanJianMapper.updateZhuantai(id,tai);
+    public int updateZhuantai(int id, int tai) {
+        return ruanJianMapper.updateZhuantai(id, tai);
     }
 
     /**
@@ -85,17 +85,18 @@ public class RuanJianServiceImpl implements RuanJianService {
      * 根据分类查询软件信息
      *
      * @param f1id
-     *
      * @return List<RuanJian>
      */
     @Override
     public List<RuanJian> queryFenlei(int f1id) {
         return ruanJianMapper.queryFenlei(f1id);
     }
+
     @Override
     public List<RuanJian> queryFenlei(int f1id, int f2id) {
-        return ruanJianMapper.queryFenlei(f1id,f2id);
+        return ruanJianMapper.queryFenlei(f1id, f2id);
     }
+
     @Override
     public List<RuanJian> queryFenlei(int f1id, int f2id, int f3id) {
         return ruanJianMapper.queryFenlei(f1id, f2id, f3id);

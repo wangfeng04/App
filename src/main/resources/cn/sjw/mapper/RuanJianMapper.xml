@@ -4,14 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.sjw.mapper.RuanJianMapper">
     <resultMap id="RuanJiamMap" type="cn.sjw.pojo.RJxxDTO">
-        <id property="id"  column="id"/>
+        <id property="id" column="id"/>
         <result property="appName" column="appName"/>
         <result property="APKName" column="APKName"/>
         <result property="appSize" column="appSize"/>
         <result property="bbH" column="bbH"/>
         <result property="xzCS" column="xzCS"/>
         <result property="appDetail" column="appDetail"/>
-        <result property="LuJin" column="LuJin" />
+        <result property="LuJin" column="LuJin"/>
         <association property="pintai" javaType="cn.sjw.pojo.Pintai">
             <id property="id" column="id"/>
             <result property="pintai" column="pintai"/>
@@ -20,10 +20,10 @@
             <id property="id" column="id"/>
             <result property="userName" column="kaifaze"/>
         </association>
-       <association property="fenLei1" javaType="cn.sjw.pojo.FenLei1">
-           <id property="f1id" column="f1id"/>
-           <result property="leixinName" column="onefenLei"/>
-       </association>
+        <association property="fenLei1" javaType="cn.sjw.pojo.FenLei1">
+            <id property="f1id" column="f1id"/>
+            <result property="leixinName" column="onefenLei"/>
+        </association>
         <association property="fenLei2" javaType="cn.sjw.pojo.FenLei2">
             <id property="f2id" column="f2id"/>
             <result property="leixinName" column="twofenlei"/>
@@ -34,132 +34,133 @@
         </association>
         <association property="zhuanTai" javaType="cn.sjw.pojo.ZhuanTai">
             <id property="id" column="id"/>
-           <result property="tai" column="tai"/>
+            <result property="tai" column="tai"/>
         </association>
     </resultMap>
-<!-- 查询所有软件信息 -->
-<select id="queryRJ"  resultMap="RuanJiamMap">
-SELECT
-r.id id,
-r.appName appName,
-r.APKName APKName,
-r.appSize appSize,
-u.userName  kaifaze,
-p.pintai pintai,
-f1.leixinName onefenLei,
-f2.leixinName twofenlei,
-f3.`leixinName` threefenli,
-z.tai tai,r.xzCS xzCS,
-r.bbH bbH,r.appDetail appDetail,r.LuJin LuJin
-FROM  `ruanjian` r,`user` u,`pintai` p ,`fenlei1` f1,`fenlei2` f2,`fenlei3` f3,`zhuantai` z
-WHERE  r.kaifazId=u.id
-     AND r.appPinTai=p.id
-     AND r.onefenLei=f1.f1id
-     AND r.twofenlei=f2.f2id
-     AND r.threefenli=f3.f3id
-     AND r.tai=z.id
-</select>
-<!--  根据id查询软件信息  -->
-    <select id="queryRJxx" resultMap="RuanJiamMap" >
-SELECT
-r.id id,
-r.appName appName,
-r.APKName APKName,
-r.appSize appSize,
-u.userName  kaifaze,
-p.pintai pintai,
-f1.leixinName onefenLei,
-f2.leixinName twofenlei,
-f3.`leixinName` threefenli,
-z.tai tai,r.xzCS xzCS,
-r.bbH bbH,r.appDetail appDetail,r.LuJin LuJin
-FROM  `ruanjian` r,`user` u,`pintai` p ,`fenlei1` f1,`fenlei2` f2,`fenlei3` f3,`zhuantai` z
-WHERE  r.kaifazId=u.id
-     AND r.appPinTai=p.id
-     AND r.onefenLei=f1.f1id
-     AND r.twofenlei=f2.f2id
-     AND r.threefenli=f3.f3id
-     AND r.tai=z.id
-     AND r.id=#{id}
+    <!-- 查询所有软件信息 -->
+    <select id="queryRJ" resultMap="RuanJiamMap">
+        SELECT
+        r.id id,
+        r.appName appName,
+        r.APKName APKName,
+        r.appSize appSize,
+        u.userName kaifaze,
+        p.pintai pintai,
+        f1.leixinName onefenLei,
+        f2.leixinName twofenlei,
+        f3.`leixinName` threefenli,
+        z.tai tai,r.xzCS xzCS,
+        r.bbH bbH,r.appDetail appDetail,r.LuJin LuJin
+        FROM `ruanjian` r,`user` u,`pintai` p ,`fenlei1` f1,`fenlei2` f2,`fenlei3` f3,`zhuantai` z
+        WHERE r.kaifazId=u.id
+        AND r.appPinTai=p.id
+        AND r.onefenLei=f1.f1id
+        AND r.twofenlei=f2.f2id
+        AND r.threefenli=f3.f3id
+        AND r.tai=z.id
     </select>
-<!--  根据id修改软件信息   的 同时给 软件历史信息表 添加记录   -->
-    <update id="updateRuanJian" parameterType="RuanJian" >
+    <!--  根据id查询软件信息  -->
+    <select id="queryRJxx" parameterType="int" resultMap="RuanJiamMap">
+        SELECT
+        r.id id,
+        r.appName appName,
+        r.APKName APKName,
+        r.appSize appSize,
+        u.userName kaifaze,
+        p.pintai pintai,
+        f1.leixinName onefenLei,
+        f2.leixinName twofenlei,
+        f3.`leixinName` threefenli,
+        z.tai tai,r.xzCS xzCS,
+        r.bbH bbH,r.appDetail appDetail,r.LuJin LuJin
+        FROM `ruanjian` r,`user` u,`pintai` p ,`fenlei1` f1,`fenlei2` f2,`fenlei3` f3,`zhuantai` z
+        WHERE r.kaifazId=u.id
+        AND r.appPinTai=p.id
+        AND r.onefenLei=f1.f1id
+        AND r.twofenlei=f2.f2id
+        AND r.threefenli=f3.f3id
+        AND r.tai=z.id
+        AND r.id=#{id}
+    </select>
+    <!--  根据id修改软件信息   的 同时给 软件历史信息表 添加记录   -->
+    <update id="updateRuanJian" parameterType="RuanJian">
         UPDATE
-    ruanjian
-SET
-    appname = #{appname},
-    APKName = #{APKName},
-    appSize=#{appSize},
-    appPintai=#{appPintai},
-    bbH =#{bbH},
-    appDetail=#{appDetail},
-    LuJin=#{LuJin}
-WHERE
-    id = #{id} ;
-INSERT INTO  `histroyrj` (appid,`appName`,`APKName`,appSize,kaifazId,zhantai,`bbH`,`appDetail`,`LuJin`)
-SELECT   id,`appName`,`APKName`,appSize,kaifazId,tai,`bbH`,`appDetail`,`LuJin`
-FROM  `ruanjian`
-WHERE NOT EXISTS
-(SELECT * FROM histroyrj WHERE histroyrj.`APKName`=ruanjian.`APKName` )
+        ruanjian
+        SET
+        appname = #{appname},
+        APKName = #{APKName},
+        appSize=#{appSize},
+        appPintai=#{appPintai},
+        bbH =#{bbH},
+        appDetail=#{appDetail},
+        LuJin=#{LuJin}
+        WHERE
+        id = #{id} ;
+        INSERT INTO `histroyrj` (appid,`appName`,`APKName`,appSize,kaifazId,zhantai,`bbH`,`appDetail`,`LuJin`)
+        SELECT id,`appName`,`APKName`,appSize,kaifazId,tai,`bbH`,`appDetail`,`LuJin`
+        FROM `ruanjian`
+        WHERE NOT EXISTS
+        (SELECT * FROM histroyrj WHERE histroyrj.`APKName`=ruanjian.`APKName` )
     </update>
-<!--  增加软件信息 的 同时给 软件历史信息表 添加记录    -->
+    <!--  增加软件信息 的 同时给 软件历史信息表 添加记录    -->
     <insert id="addRuanJian" parameterType="RuanJian">
-INSERT INTO  `ruanjian`(`appName`,`APKName`,`appSize`,`kaifazId`,`appPinTai`,`onefenLei`,`twofenlei`,`threefenli`,`xzCS`,`bbH`,`appDetail`,`LuJin`)
-VALUES(#{appname},#{APKName},#{appSize},#{kaifazId},#{appPinTai},#{onefenLei},#{twofenlei},#{threefenli},#{xzCS},#{bbH},#{appDetail},#{LuJin});
-INSERT INTO  `histroyrj`(appid,`appName`,`APKName`,appSize,kaifazId,zhantai,`bbH`,`appDetail`,`LuJin`)
-SELECT   id,`appName`,`APKName`,appSize,kaifazId,tai,`bbH`,`appDetail`,`LuJin`
-FROM  `ruanjian`
-WHERE NOT EXISTS
-(SELECT * FROM histroyrj WHERE histroyrj.`APKName`=ruanjian.`APKName` )
+        INSERT INTO
+        `ruanjian`(`appName`,`APKName`,`appSize`,`kaifazId`,`appPinTai`,`onefenLei`,`twofenlei`,`threefenli`,`xzCS`,`bbH`,`appDetail`,`LuJin`)
+        VALUES(#{appname},#{APKName},#{appSize},#{kaifazId},#{appPinTai},#{onefenLei},#{twofenlei},#{threefenli},#{xzCS},#{bbH},#{appDetail},#{LuJin});
+        INSERT INTO `histroyrj`(appid,`appName`,`APKName`,appSize,kaifazId,zhantai,`bbH`,`appDetail`,`LuJin`)
+        SELECT id,`appName`,`APKName`,appSize,kaifazId,tai,`bbH`,`appDetail`,`LuJin`
+        FROM `ruanjian`
+        WHERE NOT EXISTS
+        (SELECT * FROM histroyrj WHERE histroyrj.`APKName`=ruanjian.`APKName` )
     </insert>
-<!--根据  软件信息表的id  删除信息 -->
+    <!--根据  软件信息表的id  删除信息 -->
     <delete id="delRuanJian">
-DELETE  FROM histroyrj WHERE histroyrj.appid=#{id};
-DELETE  FROM ruanjian WHERE ruanjian.id=#{id}
+        DELETE FROM histroyrj WHERE histroyrj.appid=#{id};
+        DELETE FROM ruanjian WHERE ruanjian.id=#{id}
     </delete>
-<!--    根据id修改软件状态-->
-<update id="updateZhuantai">
-UPDATE
-    ruanjian
-SET
-    tai=#{tai}
-WHERE
-    id = #{id}
-</update>
-<!--  搜索时使用 的  模糊查询  -->
-<select id="selectRuanJian" resultMap="RuanJiamMap">
-    SELECT id,`appName`,`APKName`,`appSize`,(
-    SELECT `userName` FROM  `user`
-    WHERE   ruanjian.kaifazId=user.id)AS kaifaze,(
-    SELECT `pintai` FROM  `pintai`
-    WHERE   ruanjian.appPinTai=pintai.id  )AS pintai,(
-    SELECT `leixinName` FROM  `fenlei1`
-    WHERE   ruanjian.onefenLei=fenlei1.f1id )AS onefenLei,(
-    SELECT `leixinName` FROM  `fenlei2`
-    WHERE   ruanjian.twofenlei=fenlei2.f2id )AS twofenlei,(
-    SELECT `leixinName` FROM  `fenlei3`
-    WHERE   ruanjian.threefenli=fenlei3.f3id )AS threefenli,(
-    SELECT `tai` FROM  `zhuantai`
-    WHERE ruanjian.tai=zhuantai.id )AS tai,`xzCS`,`bbH`,`appDetail`,`LuJin`
-    FROM  `ruanjian`
-    <where>
-                appName like  concat("%",#{name},"%"),
-                OR tai like concat("%",#{name},"%"),
-                OR kaifaze like concat("%",#{name},"%"),
-                OR appDetail like concat("%",#{name},"%"),
-                OR onefenLei like concat("%",#{name},"%"),
-                OR twofenlei like concat("%",#{name},"%"),
-                OR threefenli like concat("%",#{name},"%"),
-                OR 1=1
+    <!--    根据id修改软件状态-->
+    <update id="updateZhuantai" parameterType="int">
+        UPDATE
+        `ruanjian`
+        SET
+        tai=#{tai}
+        WHERE
+        id = #{id}
+    </update>
+    <!--  搜索时使用 的  模糊查询  -->
+    <select id="selectRuanJian" resultMap="RuanJiamMap">
+        SELECT
+        r.id id,
+        r.appName appName,
+        r.APKName APKName,
+        r.appSize appSize,
+        u.userName kaifaze,
+        p.pintai pintai,
+        f1.leixinName onefenLei,
+        f2.leixinName twofenlei,
+        f3.`leixinName` threefenli,
+        z.tai tai,r.xzCS xzCS,
+        r.bbH bbH,r.appDetail appDetail,r.LuJin LuJin
+        FROM `ruanjian` r,`user` u,`pintai` p ,`fenlei1` f1,`fenlei2` f2,`fenlei3` f3,`zhuantai` z
+        <where>
+            appName like concat("%",#{name},"%"),
+            OR tai like concat("%",#{name},"%"),
+            OR kaifaze like concat("%",#{name},"%"),
+            OR appDetail like concat("%",#{name},"%"),
+            OR onefenLei like concat("%",#{name},"%"),
+            OR twofenlei like concat("%",#{name},"%"),
+            OR threefenli like concat("%",#{name},"%"),
+            OR 1=1
 
-    </where>
+        </where>
 
     </select>
-<!--  通过三级分类来进行数据  -->
+    <!--  通过三级分类来进行数据  -->
     <select id="queryFenlei" resultType="RuanJian">
-        SELECT id,`appName`,`APKName`,`appSize`,`kaifazId`,`appPinTai`,`onefenLei`,`twofenlei`,`threefenli`,`tai`,`xzCS`,`bbH`,`appDetail`,`LuJin`
+        SELECT
+        id,`appName`,`APKName`,`appSize`,`kaifazId`,`appPinTai`,`onefenLei`,`twofenlei`,`threefenli`,`tai`,`xzCS`,`bbH`,`appDetail`,`LuJin`
         FROM ruanjian
-        <trim prefix="where" prefixOverrides="AND" suffixOverrides="," >
+        <trim prefix="where" prefixOverrides="AND" suffixOverrides=",">
             <if test="onefenLei != null">
                 AND onefenLei = #{onefenLei},
             </if>

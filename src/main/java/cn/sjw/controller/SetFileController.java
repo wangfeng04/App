@@ -19,7 +19,8 @@ package cn.sjw.controller;
 //import java.io.IOException;
 //
 //@Controller
-public class SetFileController {}
+public class SetFileController {
+}
 //    @Autowired
 //    private UserService userService;
 //    @GetMapping("/user")

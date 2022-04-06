@@ -13,8 +13,8 @@ public class FenLei2 {
     /**
      * 二级分类
      */
-    private Integer  f2id;
+    private Integer f2id;
     private String leixinName;  //类型名
-    private Integer  f1id;      //父类id
+    private Integer f1id;      //父类id
 
 }

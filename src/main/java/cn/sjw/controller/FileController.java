@@ -34,9 +34,9 @@ public class FileController {
         //将流读取到自己数组
         is.read(bytes);
         //创建HttpHeader对象设置响应头
-        MultiValueMap<String,String> headers = new HttpHeaders();
+        MultiValueMap<String, String> headers = new HttpHeaders();
         //设置下载方式及下载文件名字
-        headers.add("Content-Disposition","attachment;filename=text.zip");
+        headers.add("Content-Disposition", "attachment;filename=text.zip");
         //设置响应代码
         HttpStatus statusCode = HttpStatus.OK;
         //创建ResponseEntity 对象

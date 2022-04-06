@@ -3,13 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.sjw.mapper.FenleiMapper">
-<select id="queryF1" resultType="FenLei1" >
-    SELECT  f1id,`leixinName` FROM `fenlei1`
-</select>
-<select id="queryF2"  resultType="FenLei2" >
-    SELECT  f2id,`leixinName` FROM `fenlei2` WHERE `f1id`=#{f1id}
-</select>
-<select id="queryF3"  resultType="FenLei3" >
-  SELECT  f3id,`leixinName` FROM `fenlei3` WHERE `f1id`=#{f1id} AND `f2id`=#{f3id}
-</select>
+    <select id="queryF1" resultType="FenLei1">
+        SELECT f1id,`leixinName` FROM `fenlei1`
+    </select>
+    <select id="queryF2" resultType="FenLei2">
+        SELECT f2id,`leixinName` FROM `fenlei2` WHERE `f1id`=#{f1id}
+    </select>
+    <select id="queryF3" resultType="FenLei3">
+        SELECT f3id,`leixinName` FROM `fenlei3` WHERE `f1id`=#{f1id} AND `f2id`=#{f3id}
+    </select>
 </mapper>

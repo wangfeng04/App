@@ -5,7 +5,7 @@
 <mapper namespace="cn.sjw.mapper.HistroryRJMapper">
 
     <resultMap id="HistroyMap" type="cn.sjw.pojo.HistroyRJxxDTO">
-        <id property="id"  column="id"/>
+        <id property="id" column="id"/>
         <result property="appid" column="appid"/>
         <result property="appName" column="appName"/>
         <result property="APKName" column="APKname"/>
@@ -25,38 +25,38 @@
 
     </resultMap>
 
-<!--&lt;!&ndash;    查询软件历史版本信息  &ndash;&gt;-->
-<!--<select id="queryHistrory" resultMap="HistroyMap">-->
-<!--SELECT id,appid,appName,`APKName`,`appSize`,-->
-<!--(-->
-<!--	SELECT `userNamee`-->
-<!--	FROM  `user`-->
-<!--	WHERE   histroyrj.kaifazId=user.id-->
-<!--)AS kaifaze,(-->
-<!--	SELECT `tai2`-->
-<!--	FROM  `zhuantai2`-->
-<!--	WHERE histroyrj.zhantai=zhuantai2.tai1Id-->
-<!--)AS Zhuantai,`bbH`,`appDetail`,`LuJin`-->
-<!--FROM  `histroyrj`;-->
+    <!--&lt;!&ndash;    查询软件历史版本信息  &ndash;&gt;-->
+    <!--<select id="queryHistrory" resultMap="HistroyMap">-->
+    <!--SELECT id,appid,appName,`APKName`,`appSize`,-->
+    <!--(-->
+    <!--	SELECT `userNamee`-->
+    <!--	FROM  `user`-->
+    <!--	WHERE   histroyrj.kaifazId=user.id-->
+    <!--)AS kaifaze,(-->
+    <!--	SELECT `tai2`-->
+    <!--	FROM  `zhuantai2`-->
+    <!--	WHERE histroyrj.zhantai=zhuantai2.tai1Id-->
+    <!--)AS Zhuantai,`bbH`,`appDetail`,`LuJin`-->
+    <!--FROM  `histroyrj`;-->
 
-<!--</select>-->
+    <!--</select>-->
     <!--   根据  Appid 查询软件历史版本信息  -->
-<select id="selectHistrory" resultMap="HistroyMap">
-SELECT h.id id,
-h.appid appid,
-h.appName appName,
-h.APKName APKName,
-h.appSize appSize,
-u.`userName` kaifaze,
-z.tai2  zhuantai,
-h.bbH bbH,
-h.appDetail appDetail,
-h.LuJin LuJin
-FROM  `histroyrj` h,`user` u ,`zhuantai2` z
-WHERE
+    <select id="selectHistrory" resultMap="HistroyMap">
+        SELECT h.id id,
+        h.appid appid,
+        h.appName appName,
+        h.APKName APKName,
+        h.appSize appSize,
+        u.`userName` kaifaze,
+        z.tai2 zhuantai,
+        h.bbH bbH,
+        h.appDetail appDetail,
+        h.LuJin LuJin
+        FROM `histroyrj` h,`user` u ,`zhuantai2` z
+        WHERE
         h.kaifazId=u.id
-  AND   h.zhantai=z.tai1Id
-  AND	h.zhantai=z.tai1Id
-  AND   h.appid=#{id}
+        AND h.zhantai=z.tai1Id
+        AND h.zhantai=z.tai1Id
+        AND h.appid=#{id}
     </select>
 </mapper>

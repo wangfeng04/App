@@ -12,13 +12,13 @@ public class MyInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //preHandle() 方法：该方法会在控制器方法前执行，其返回值表示是否中断后续操作。当其返回值
         //为true时，表示继续向下执行；当其返回值为false时，会中断后续的所有操作（包括调用下一个拦截器和控制器类中的方法执行等）。
-        HttpSession session= request.getSession();
-        String uName= (String) session.getAttribute("uName");
-        String pwd= (String) session.getAttribute("pwd");
-        if ("admin".equals(uName) && "admin".equals(pwd)){
-                return true;
+        HttpSession session = request.getSession();
+        String uName = (String) session.getAttribute("uName");
+        String pwd = (String) session.getAttribute("pwd");
+        if ("admin".equals(uName) && "admin".equals(pwd)) {
+            return true;
         }
-        request.getRequestDispatcher("WEB-INF/jsp/.jsp").forward(request,response);
+        request.getRequestDispatcher("WEB-INF/jsp/.jsp").forward(request, response);
         return false;
     }
 

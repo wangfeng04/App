@@ -11,7 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class ZhuanTai2 {
     private Integer id;
-    private String tai2 ;     //状态 1,2 预发布 3已发布 4,5不发布
-    private Integer tai1Id  ; // zhuantai的id
+    private String tai2;     //状态 1,2 预发布 3已发布 4,5不发布
+    private Integer tai1Id; // zhuantai的id
 
 }

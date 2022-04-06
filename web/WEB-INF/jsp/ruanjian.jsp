@@ -5,8 +5,8 @@
   Time: 16:00
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<% pageContext.setAttribute("APP_PATH",request.getContextPath()); %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<% pageContext.setAttribute("APP_PATH", request.getContextPath()); %>
 <html>
 <head>
     <title>软件信息列表</title>
@@ -20,9 +20,11 @@
         <div class="modal-content">            
             <div class="modal-header">                
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>                
+                    <span aria-hidden="true">&times;</span></button>
+                               
                 <h4 class="modal-title" id="myModalLabel">添加软件</h4>            
-            </div>            
+            </div>
+                       
             <div class="modal-body">                
                 <form name="addForm" id="addForm" method="post">
                     <div class="form-group">
@@ -81,13 +83,19 @@
                         <input type="text" class="form-control" name="LuJin" id="LuJin" placeholder="文件上传">
                         <span class="help-block"></span>
                     </div>
-                </form>        
-            </div>            
+                </form>
+                       
+            </div>
+                       
             <div class="modal-footer">                
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>                
-                <button type="button" class="btn btn-primary" id="addSubmit">添加</button>            
-            </div>        
-        </div>    
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                               
+                <button type="button" class="btn btn-primary" id="addSubmit">添加</button>
+                           
+            </div>
+                   
+        </div>
+           
     </div>
 </div>
 
@@ -97,9 +105,11 @@
         <div class="modal-content">
             <div class="modal-header">                
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>                
+                    <span aria-hidden="true">&times;</span></button>
+                               
                 <h4 class="modal-title" id="myModalLabel2">修改软件信息</h4>            
-            </div>            
+            </div>
+                       
             <div class="modal-body">                
                 <form name="addForm" id="updateForm" method="post">
                     <div class="form-group">
@@ -114,7 +124,8 @@
                     </div>
                     <div class="form-group">
                         <label for="bookCounts">软件大小:</label>
-                        <input type="text" class="form-control" name="bookCounts" id="edit_bookCounts" placeholder="软件大小">
+                        <input type="text" class="form-control" name="bookCounts" id="edit_bookCounts"
+                               placeholder="软件大小">
                         <span class="help-block"></span>
                     </div>
                     <div class="form-group">
@@ -139,7 +150,8 @@
                     </div>
                     <div class="form-group">
                         <label for="threefenli">三级分类:</label>
-                        <input type="text" class="form-control" name="threefenli" id="edit_threefenli" placeholder="下载次数">
+                        <input type="text" class="form-control" name="threefenli" id="edit_threefenli"
+                               placeholder="下载次数">
                         <span class="help-block"></span>
                     </div>
                     <div class="form-group">
@@ -158,13 +170,19 @@
                         <input type="text" class="form-control" name="LuJin" id="edit_LuJin" placeholder="文件上传">
                         <span class="help-block"></span>
                     </div>
-                </form>        
-            </div>          
+                </form>
+                       
+            </div>
+                     
             <div class="modal-footer">                
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>                
-                <button type="button" class="btn btn-primary" id="updateSubmit">更新</button>            
-            </div>        
-        </div>    
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                               
+                <button type="button" class="btn btn-primary" id="updateSubmit">更新</button>
+                           
+            </div>
+                   
+        </div>
+           
     </div>
 </div>
 

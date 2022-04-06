@@ -22,28 +22,29 @@ public class UserController {
     private UserService userService;
 
     /**
-     *  注册
-     * @param user  要校验的数据  要加 @Valid注解
-     * @param result  校验的结果
+     * 注册
+     *
+     * @param user   要校验的数据  要加 @Valid注解
+     * @param result 校验的结果
      * @return
      */
     @ResponseBody
     @PutMapping("/add")
-    public Mag addUser(@Valid User user, BindingResult result){
+    public Mag addUser(@Valid User user, BindingResult result) {
         //创建一个错误的map集合
-        Map<String,Object> errorMap = new HashMap<String,Object>();
-        if(result.hasErrors()){
+        Map<String, Object> errorMap = new HashMap<String, Object>();
+        if (result.hasErrors()) {
             List<FieldError> errors = result.getFieldErrors();
             for (FieldError error : errors) {
-                System.out.println("error fildes："+error.getField());
-                System.out.println("error info："+error.getDefaultMessage());
+                System.out.println("error fildes：" + error.getField());
+                System.out.println("error info：" + error.getDefaultMessage());
                 //将字段名称作为Key 错误提示信息作为 value 存入map
-                errorMap.put(error.getField(),error.getDefaultMessage());
+                errorMap.put(error.getField(), error.getDefaultMessage());
             }
             //将错误信息的map加入到返回的Msg中返回给页面
-            return Mag.fail().add("errorMap",errorMap);
-        }else {
-            int i =userService.addUser(user);
+            return Mag.fail().add("errorMap", errorMap);
+        } else {
+            int i = userService.addUser(user);
             return Mag.success();
         }
 
@@ -51,25 +52,23 @@ public class UserController {
 
     //登陆
     @PostMapping("/hello")
-    public String selectUseer(User user){
+    public String selectUseer(User user) {
 
 //                HttpSession session = request.getSession();
-                User user1 = userService.selectUser(user);
-            if ( user1!=null ){
-                if(user1.getUserName()!=null && user1.getPassward()!=null){
-                    if(user1.getQuanXian()==1){
-                          return "shenhe";
-                    }else{
-                          return "ruanjian";
-                    }
+        User user1 = userService.selectUser(user);
+        if (user1 != null) {
+            if (user1.getUserName() != null && user1.getPassward() != null) {
+                if (user1.getQuanXian() == 1) {
+                    return "shenhe";
+                } else {
+                    return "ruanjian";
                 }
-            }else {
-             return "index";
             }
+        } else {
+            return "index";
+        }
         return "index";
     }
-
-
 
 
 }

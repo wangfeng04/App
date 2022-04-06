@@ -17,7 +17,7 @@ public class HistroyRJxxDTO extends HistroryRJ {
 
     @Override
     public String toString() {
-        return super.toString()+"HistroyRJxxDTO{" +
+        return super.toString() + "HistroyRJxxDTO{" +
                 "zhuanTai2=" + zhuanTai2 +
                 ", user=" + user +
                 '}';

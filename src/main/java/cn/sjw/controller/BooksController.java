@@ -20,7 +20,8 @@ package cn.sjw.controller;
 //@Controller
 //@RequestMapping("/book")
 
-public class BooksController {}
+public class BooksController {
+}
 
 //    @Autowired
 //    private BooksService booksService;

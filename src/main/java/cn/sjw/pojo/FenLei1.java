@@ -13,6 +13,6 @@ public class FenLei1 {
     /**
      * 一级分类
      */
-    private Integer  f1id;
+    private Integer f1id;
     private String leixinName;  //类型名
 }

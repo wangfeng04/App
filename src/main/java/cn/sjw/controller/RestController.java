@@ -1,4 +1,5 @@
 package cn.sjw.controller;
+
 //
 //import cn.sjw.bean.Mag;
 //import cn.sjw.pojo.RuanJian;
@@ -21,7 +22,8 @@ package cn.sjw.controller;
 //import java.util.Map;
 //
 //@Controller
-public class RestController {}
+public class RestController {
+}
 //    @Autowired
 //   private BooksService booksService;
 //    @GetMapping("/gotoBooks")

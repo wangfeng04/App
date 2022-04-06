@@ -20,7 +20,7 @@ public class RJxxDTO extends RuanJian {
 
     @Override
     public String toString() {
-        return super.toString()+"RJxxDTO{" +
+        return super.toString() + "RJxxDTO{" +
                 "fenLei1=" + fenLei1 +
                 ", fenLei2=" + fenLei2 +
                 ", fenLei3=" + fenLei3 +

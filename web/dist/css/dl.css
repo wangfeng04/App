@@ -1,10 +1,9 @@
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    background: url(../img/view.jpg)  no-repeat center 0px;
+    background: url(../img/view.jpg) no-repeat center 0px;
     background-size: cover;
-
 
 
     background-position: center 0;
@@ -16,28 +15,32 @@ body{
     -ms-background-size: cover;
 
 }
-.login-box{
+
+.login-box {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 550px;
-    padding:40px;
-    background: rgba(0,0,0,.8);
+    padding: 40px;
+    background: rgba(0, 0, 0, .8);
     box-sizing: border-box;
-    box-shadow: 0 15px  25px rgba(0,0,0,.5);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
     border-radius: 10px;
 }
-.login-box h2{
+
+.login-box h2 {
     margin: 0 0 30px;
     padding: 0;
     text-align: center;
     color: #fff;
 }
-.login-box .login-field{
+
+.login-box .login-field {
     position: relative;
 }
-.login-box .login-field  input{
+
+.login-box .login-field input {
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -48,7 +51,8 @@ body{
     outline: none;
     background: transparent;
 }
-.login-box .login-field  label{
+
+.login-box .login-field label {
     position: absolute;
     top: 0;
     left: 0;
@@ -59,14 +63,16 @@ body{
     pointer-events: none;
     transition: .5s;
 }
+
 .login-box .login-field input:focus ~ label,
-.login-box .login-field input:valid ~ label{
+.login-box .login-field input:valid ~ label {
     top: -23px;
     left: 0;
     color: aqua;
     font-size: 12px;
 }
-.login-box button{
+
+.login-box button {
     background: transparent;
     border: none;
     outline: none;

@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-                       <!-- 主配置文件 -->
+    <!-- 主配置文件 -->
 
     <!-- 导入其他的spring配置文件 -->
     <import resource="spring-dao.xml"/>

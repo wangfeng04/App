@@ -11,7 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class Pintai {
     /**
-     *   平台类
+     * 平台类
      */
     private Integer id;
     private String pintai;//平台 1 手机  2 平板  3 通用
