@@ -1,6 +1,7 @@
 package cn.sjw.service;
 
 import cn.sjw.pojo.RuanJian;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -10,7 +11,10 @@ public interface RuanJianService {
      */
 
     List<RuanJian> queryRJ();
-
+    /**
+     * 查看软件信息列表   开发者表
+     */
+    List<RuanJian> queryRJByKaid(int kaifazId);
     /**
      * 根据id查询软件信息
      */

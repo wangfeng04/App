@@ -25,8 +25,8 @@
     </style>
 </head>
 <body>
+<%--      editModal           --%>
 <%--      当前软件信息           --%>
-<!-- editModal -->
 <div class="modal fade" id="editModal" role="dialog" aria-labelledby="myModalLabel2">    
     <div class="modal-dialog" role="document">        
         <div class="modal-content">
@@ -108,7 +108,7 @@
            
     </div>
 </div>
-<!-- hisModal -->
+<!-- 当前软件的历史信息 -->
 <div class="modal fade modal-body" id="histroyModal" role="dialog" aria-labelledby="myModalLabel2">    
     <div class="modal-dialog" style="height:900px;width:900px;text-overflow:ellipsis; white-space: nowrap; overflow:hidden;" role="document">        
         <div class="modal-content">

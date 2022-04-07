@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,10 +57,12 @@ public class UserController {
 
     //登陆
     @PostMapping("/hello")
-    public String selectUseer(User user) {
+    public String selectUseer(User user, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//                HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         User user1 = userService.selectUser(user);
+        session.setAttribute("userid",user1.getId());
+        System.out.println(user1.getId());
         if (user1 != null) {
             if (user1.getUserName() != null && user1.getPassward() != null) {
                 if (user1.getQuanXian() == 1) {
@@ -69,6 +76,17 @@ public class UserController {
         }
         return "index";
     }
+    @ResponseBody
+    @PostMapping("/getuser")
+    public Map getUseer(User user, HttpServletRequest request) throws ServletException, IOException {
+
+        HttpSession session = request.getSession();
+       Object userid = session.getAttribute("userid");
+      Map<String,Object> restUser=new HashMap<String, Object>();
+        restUser.put("userid",userid);
+        return restUser;
+    }
+
 
 
 }

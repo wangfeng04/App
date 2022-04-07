@@ -59,6 +59,28 @@
         AND r.threefenli=f3.f3id
         AND r.tai=z.id
     </select>
+    <select id="queryRJByKaid" resultMap="RuanJiamMap">
+         SELECT
+        r.id id,
+        r.appName appName,
+        r.APKName APKName,
+        r.appSize appSize,
+        u.userName kaifaze,
+        p.pintai pintai,
+        f1.leixinName onefenLei,
+        f2.leixinName twofenlei,
+        f3.`leixinName` threefenli,
+        z.tai tai,r.xzCS xzCS,
+        r.bbH bbH,r.appDetail appDetail,r.LuJin LuJin
+        FROM `ruanjian` r,`user` u,`pintai` p ,`fenlei1` f1,`fenlei2` f2,`fenlei3` f3,`zhuantai` z
+        WHERE r.kaifazId=u.id
+        AND r.appPinTai=p.id
+        AND r.onefenLei=f1.f1id
+        AND r.twofenlei=f2.f2id
+        AND r.threefenli=f3.f3id
+        AND r.tai=z.id
+        AND r.kaifazId=#{kaifazId}
+    </select>
     <!--  根据id查询软件信息  -->
     <select id="queryRJxx" parameterType="int" resultMap="RuanJiamMap">
         SELECT
@@ -90,7 +112,6 @@
         appname = #{appname},
         APKName = #{APKName},
         appSize=#{appSize},
-        appPintai=#{appPintai},
         bbH =#{bbH},
         appDetail=#{appDetail},
         LuJin=#{LuJin}

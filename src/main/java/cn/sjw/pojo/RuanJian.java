@@ -17,8 +17,9 @@ public class RuanJian {
      * 软件版本信息
      */
     private Integer id;
+    @NotNull
     private String appName;                         //软件名称
-    @Pattern(regexp = "^[A-Za-z0-9_\\u2E80-\\u9FFF]{1,50}$", message = "中英文混合之后不能出现特殊字符！")
+    @Pattern(regexp = "^[\\w\\d_\\+\\.]+$", message = "英文数字下划线,加号及点组合，不能有特殊字符！")
     private String APKName;                         //APK名称（安装包名）
     private Double appSize;                         //软件大小
     @NotNull

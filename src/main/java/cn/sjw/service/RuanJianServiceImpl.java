@@ -22,6 +22,16 @@ public class RuanJianServiceImpl implements RuanJianService {
     }
 
     /**
+     * 查看软件信息列表   开发者表
+     *
+     * @param kaifazId
+     */
+    @Override
+    public List<RuanJian> queryRJByKaid(int kaifazId) {
+        return ruanJianMapper.queryRJByKaid(kaifazId);
+    }
+
+    /**
      * 根据id查询软件信息
      *
      * @param id

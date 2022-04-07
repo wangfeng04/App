@@ -188,15 +188,15 @@
         })
     }
 
-    //分页信息
-    // function page_pageInfo_(data) {
-    //     $("#page_pageInfo").empty();
-    //     var booksPageInfo = data.returnData.booksPageInfo;
-    //     // 当前是第<span class="current-page"></span> 页   /   ，共 <span  class="total"> </span> 条信息
-    //     $("#page_pageInfo").append("当前是第 "+booksPageInfo.pageNum+" 页   "+booksPageInfo.pageNum+"/"+booksPageInfo.pages+" 页    共 "+booksPageInfo.total+"条信息");
-    //
-    //
-    // }
+    分页信息
+    function page_pageInfo_(data) {
+        $("#page_pageInfo").empty();
+        var booksPageInfo = data.returnData.booksPageInfo;
+        // 当前是第<span class="current-page"></span> 页   /   ，共 <span  class="total"> </span> 条信息
+        $("#page_pageInfo").append("当前是第 "+booksPageInfo.pageNum+" 页   "+booksPageInfo.pageNum+"/"+booksPageInfo.pages+" 页    共 "+booksPageInfo.total+"条信息");
+
+
+    }
     // 页码
     function buid_booklist(data) {
         $(".pagination").empty();
