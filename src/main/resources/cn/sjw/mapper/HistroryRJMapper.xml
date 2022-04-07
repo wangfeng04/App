@@ -21,8 +21,6 @@
             <id property="id" column="id"/>
             <result property="tai2" column="Zhuantai"/>
         </association>
-
-
     </resultMap>
 
     <select id="selectHistrory" parameterType="int" resultMap="HistroyMap">

@@ -109,8 +109,8 @@
     </div>
 </div>
 <!-- hisModal -->
-<div class="modal fade" id="histroyModal" role="dialog" aria-labelledby="myModalLabel2">    
-    <div class="modal-dialog" role="document">        
+<div class="modal fade modal-body" id="histroyModal" role="dialog" aria-labelledby="myModalLabel2">    
+    <div class="modal-dialog" style="height:900px;width:900px;text-overflow:ellipsis; white-space: nowrap; overflow:hidden;" role="document">        
         <div class="modal-content">
             <div class="modal-header">                
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -118,19 +118,20 @@
                                
                 <h4 class="modal-title" id="hisModal">软件历史信息</h4>            
             </div>
-            <div class="container table-responsive" style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;" >
-                <table style="table-layout:fixed;max-width: 150px;"  class="max-width: 150px; table table-striped  table-bordered table-hover table-condensed">
-                    <tr style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">
-                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">软件名称</th>
-                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">APK名称</th>
-                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">软件大小</th>
-                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">当前状态</th>
-                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">下载次数</th>
-                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">版本号</th>
-                        <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">软件介绍</th>
+            <div class="container table-responsive">
+                <table   class="table table-striped  table-bordered table-hover table-condensed">
+                    <tr >
+                        <th>软件名称</th>
+                        <th>APK名称</th>
+                        <th>软件大小</th>
+                        <th>开发者</th>
+                        <th>当前状态</th>
+                        <th>版本号</th>
+                        <th>软件介绍</th>
+                        <th>下载路径</th>
 
                     </tr>
-                    <tbody id="his_table" style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">
+                    <tbody id="his_table" >
 
                     </tbody>
                 </table>
@@ -146,41 +147,41 @@
     </div>
 </div>
 
-<%--三级分类--%>
-<div class="dropdown">
-    <a id="dLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <h3 class="clear" class="col-lg-5"> 分类</h3>
-        <span class="caret"></span>
-    </a>
-    <a id="d1Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true"
-       aria-expanded="false">
-        一级分类
-        <span class="caret"></span>
-    </a>
+<%--&lt;%&ndash;三级分类&ndash;%&gt;--%>
+<%--<div class="dropdown">--%>
+<%--    <a id="dLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">--%>
+<%--        <h3 class="clear" class="col-lg-5"> 分类</h3>--%>
+<%--        <span class="caret"></span>--%>
+<%--    </a>--%>
+<%--    <a id="d1Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true"--%>
+<%--       aria-expanded="false">--%>
+<%--        一级分类--%>
+<%--        <span class="caret"></span>--%>
+<%--    </a>--%>
 
-    <ul class="dropdown-menu" aria-labelledby="dLabel">
+<%--    <ul class="dropdown-menu" aria-labelledby="d1Label">--%>
 
-    </ul>
-    <a id="d2Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true"
-       aria-expanded="false">
-        二级分类
-        <span class="caret"></span>
-    </a>
+<%--    </ul>--%>
+<%--    <a id="d2Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true"--%>
+<%--       aria-expanded="false">--%>
+<%--        二级分类--%>
+<%--        <span class="caret"></span>--%>
+<%--    </a>--%>
 
-    <ul class="dropdown-menu" aria-labelledby="dLabel">
+<%--    <ul class="dropdown-menu" aria-labelledby="dLabel">--%>
 
-    </ul>
-    <a id="d3Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true"
-       aria-expanded="false">
-        三级分类
-        <span class="caret"></span>
-    </a>
+<%--    </ul>--%>
+<%--    <a id="d3Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true"--%>
+<%--       aria-expanded="false">--%>
+<%--        三级分类--%>
+<%--        <span class="caret"></span>--%>
+<%--    </a>--%>
 
-    <ul class="dropdown-menu" aria-labelledby="dLabel">
+<%--    <ul class="dropdown-menu" aria-labelledby="dLabel">--%>
 
-    </ul>
+<%--    </ul>--%>
 
-</div>
+<%--</div>--%>
 
 
 <%out.print(request.getContextPath());%>
@@ -189,22 +190,22 @@
 </div>
 <div class="container table-responsive">
 
-    <table style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;"  class="table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
+    <table style="overflow: scroll;  text-overflow:ellipsis; white-space: nowrap;"  class="table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
         <tr>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">软件编号</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">软件名称</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">APK名称</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">软件大小</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">开发者</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">所属分类</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">所属平台</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">当前状态</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">下载次数</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">版本号</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">软件介绍</th>
-            <th style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">操作</th>
+            <th style="overflow:hidden;white-space: nowrap;">软件编号</th>
+            <th>软件名称</th>
+            <th>APK名称</th>
+            <th>软件大小</th>
+            <th>开发者</th>
+            <th>所属分类</th>
+            <th>所属平台</th>
+            <th>当前状态</th>
+            <th>下载次数</th>
+            <th>版本号</th>
+            <th>软件介绍</th>
+            <th>操作</th>
         </tr>
-        <tbody id="rj_table" style="overflow: hidden;  text-overflow:ellipsis; white-space: nowrap;">
+        <tbody id="rj_table" style="overflow: scroll;white-space: nowrap;">
 
         </tbody>
     </table>
@@ -255,17 +256,17 @@
 
         $.each(rj, function (index, item) {
             //构建 td 存放数据
-            var id_td = $("<td></td>").append(item.id).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-            var appName_td = $("<td></td>").append(item.appName).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-            var APKName_td = $("<td></td>").append(item.apkname).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-            var appSize_td = $("<td></td>").append(item.appSize + " MB").addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-            var pintai_td = $("<td></td>").append(item.pintai.pintai).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-            var fenLei_td = $("<td></td>").append(item.fenLei1.leixinName + "-" + item.fenLei2.leixinName + "-" + item.fenLei3.leixinName).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-            var zhuantai_td = $("<td></td>").append(item.zhuanTai.tai).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-            var kaifaze_td = $("<td></td>").append(item.user.userName).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-            var xzCS_td = $("<td></td>").append(item.xzCS).addClass("max-width: 150px;overflow: scroll;text-overflow:ellipsis;white-space: nowrap;");
-            var bbH_td = $("<td></td>").append(item.bbH).addClass("max-width: 150px;overflow: scroll;text-overflow:ellipsis;white-space: nowrap;");
-            var appDetail_td = $("<td></td>").append(item.appDetail).addClass("max-width: 150px;overflow: hidden; text-overflow:ellipsis;white-space: nowrap;");
+            var id_td = $("<td></td>").append(item.id);
+            var appName_td = $("<td></td>").append(item.appName);
+            var APKName_td = $("<td></td>").append(item.apkname);
+            var appSize_td = $("<td></td>").append(item.appSize + " MB");
+            var pintai_td = $("<td></td>").append(item.pintai.pintai);
+            var fenLei_td = $("<td></td>").append(item.fenLei1.leixinName + "-" + item.fenLei2.leixinName + "-" + item.fenLei3.leixinName);
+            var zhuantai_td = $("<td></td>").append(item.zhuanTai.tai);
+            var kaifaze_td = $("<td></td>").append(item.user.userName);
+            var xzCS_td = $("<td></td>").append(item.xzCS);
+            var bbH_td = $("<td></td>").append(item.bbH);
+            var appDetail_td = $("<td></td>").append(item.appDetail);
             var LuJin_td = $("<td></td>").append(item.luJin)
 
             //操作列的td
@@ -491,16 +492,14 @@
                 console.log(hisrj)
                 $.each(hisrj, function (index, item) {
                     //构建 td 存放数据
-                    var hisappName_td = $("<td></td>").append(item.appName).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                    var hisAPKName_td = $("<td></td>").append(item.apkname).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                    var hisappSize_td = $("<td></td>").append(item.appSize + " MB").addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                    var hispintai_td = $("<td></td>").append(item.pintai.pintai).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                    var hisfenLei_td = $("<td></td>").append(item.fenLei1.leixinName + "-" + item.fenLei2.leixinName + "-" + item.fenLei3.leixinName).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                    var hiszhuantai_td = $("<td></td>").append(item.zhuanTai.tai).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                    var hiskaifaze_td = $("<td></td>").append(item.user.userName).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                    var hisbbH_td = $("<td></td>").append(item.bbH).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                    var hisappDetail_td = $("<td></td>").append(item.appDetail).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                    var hisLuJin_td = $("<td></td>").append($("<a></a>").attr("herf", item.luJin).append(item.luJin)).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
+                    var hisappName_td = $("<td></td>").append(item.appName);
+                    var hisAPKName_td = $("<td></td>").append(item.apkname);
+                    var hisappSize_td = $("<td></td>").append(item.appSize + " MB");
+                    var hiszhuantai_td = $("<td></td>").append(item.zhuanTai2.tai2);
+                    var hiskaifaze_td = $("<td></td>").append(item.user.userName);
+                    var hisbbH_td = $("<td></td>").append(item.bbH);
+                    var hisappDetail_td = $("<td></td>").append(item.appDetail);
+                    var hisLuJin_td = $("<td></td>").append($("<button></butten>").append($("<a></a>").attr("herf","#").append(item.luJin))).addClass("overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
 
                     //将4个td 放入一个tr里
                     var tr = $("<tr></tr>")
@@ -508,10 +507,7 @@
                         .append(hisAPKName_td)
                         .append(hisappSize_td)
                         .append(hiskaifaze_td)
-                        .append(hisfenLei_td)
-                        .append(hispintai_td)
                         .append(hiszhuantai_td)
-                        .append(xzCS_td)
                         .append(hisbbH_td)
                         .append(hisappDetail_td)
                         .append(hisLuJin_td)
