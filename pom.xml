@@ -132,7 +132,6 @@
     <!--  maven 资源过滤  -->
     <build>
         <resources>
-
             <resource>
                 <directory>src/main/java</directory>
                 <includes>

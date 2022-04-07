@@ -14,19 +14,12 @@ public class HistroryRJServiceImpl implements HistroryRJService {
     private HistroryRJMapper histroryRJMapper;
     /**
      * 查询软件历史数据
-     */
-//    @Override
-//    public List<HistroryRJ> queryHistrory() {
-//        return histroryRJMapper.queryHistrory();
-//    }
-
-    /**
-     * 查询软件历史数据
      *
      * @param appid
      */
     @Override
     public List<HistroryRJ> selectHistrory(int appid) {
+
         return histroryRJMapper.selectHistrory(appid);
     }
 }

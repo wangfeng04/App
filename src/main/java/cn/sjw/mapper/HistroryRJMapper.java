@@ -10,11 +10,6 @@ public interface HistroryRJMapper {
     /**
      * 查询软件历史数据
      */
-//    List<HistroryRJ> queryHistrory();
-
-    /**
-     * 查询软件历史数据
-     */
     List<HistroryRJ> selectHistrory(@Param("appid") int appid);
 
 

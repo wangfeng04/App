@@ -18,6 +18,7 @@ import java.util.Map;
 public class RuanJianController {
     @Autowired
     private RuanJianService ruanJianService;
+    @Autowired
     private HistroryRJService histroryRJService;
 
     /**
@@ -47,17 +48,17 @@ public class RuanJianController {
     public Mag  getRuanJian(@PathVariable("id") Integer id) {
         System.out.println("id="+id);
         RuanJian ruanJian = ruanJianService.queryRJxx(id);
-//        List<HistroryRJ> histroryRJS = histroryRJService.selectHistrory(id);
-        //ruanJian传不到前端
+
         return Mag.success().add("ruanJian",ruanJian);
     }
 
     //根据 ID 查询软件历史版本信息
     @ResponseBody
-    @GetMapping("/histry/{id}")
-    public Mag  getHisRuanJian(@PathVariable("id") Integer id,@RequestParam(value = "pageNum", defaultValue = "1") Integer pn) {
-        System.out.println("id="+id);
-        List<HistroryRJ> histroryRJS = histroryRJService.selectHistrory(id);
+    @GetMapping("/histry/{appid}")
+    public Mag  getHisRuanJian(@PathVariable("appid") Integer appid) {
+        System.out.println("appid="+appid);
+        List<HistroryRJ> histroryRJS = histroryRJService.selectHistrory(appid);
+        System.out.println("histroryRJS====="+histroryRJS);
         return Mag.success().add("histroryRJS",histroryRJS);
     }
 

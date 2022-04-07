@@ -272,7 +272,7 @@
             //查看软件信息
             var eyes_btn = $("<button></button>").addClass("btn btn-sm btn-primary eyes_btn").attr("data-id", item.id).attr("data-pn", data.returnData.pageInfo.pageNum)
                 .append($("<span></span>").addClass("glyphicon glyphicon-tasks")).append("&nbsp;  查看")
-            var his_btn = $("<button></button>").addClass("btn btn-sm btn-primary eyes_btn").attr("data-id", item.id).attr("data-pn", data.returnData.pageInfo.pageNum)
+            var his_btn = $("<button></button>").addClass("btn btn-sm btn-primary his_btn").attr("data-id", item.id).attr("data-pn", data.returnData.pageInfo.pageNum)
                 .append($("<span></span>").addClass("glyphicon glyphicon-tasks")).append("&nbsp;  查看历史信息")
 
             //审核通过按钮
