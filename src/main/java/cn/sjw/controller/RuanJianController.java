@@ -162,11 +162,16 @@ public class RuanJianController {
 
     //删除图书
     @ResponseBody
-    @RequestMapping(value = "/delet/{id}",method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.DELETE)
     public Mag deleteBook(@PathVariable("id") Integer id){
+        int appid=id;
+
+        int n=ruanJianService.delHisRuanJian(appid);
         int i = ruanJianService.delRuanJian(id);
-        if (i>0){
-            return Mag.success().add("msg","success");
+        if (n>0){
+            if (i>0) {
+                return Mag.success().add("msg", "success");
+            }
         }
         return Mag.fail().add("msg","error");
     }

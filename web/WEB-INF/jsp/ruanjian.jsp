@@ -484,6 +484,12 @@ User user= (User) session.getAttribute("user");
             //将操作按钮放入操作的td列
             var ac = $("<td></td>").append(eyes_btn).append(update_btn).append(edit_btn).append(del_btn).append(his_btn).append(rem_btn)
 
+
+            if (item.zhuanTai.tai=="待审核") {
+                del_btn.addClass("disabled");
+                edit_btn.addClass("disabled");
+
+            }
             if (item.zhuanTai.tai=="审核通过") {
                 del_btn.addClass("disabled");
 
@@ -800,8 +806,8 @@ User user= (User) session.getAttribute("user");
         if (confirm("你确定删除吗")) {
             //发送删除的请求            
             $.ajax({
-                url: "${APP_PATH}/delet/" + $(this).attr("data-id"),
-                data: "_method=delete",
+                url: "${APP_PATH}/delete/"+$(this).attr("data-id"),
+                data:"_method=delete",
                 method: "POST",
                 success: function (data) {
                     console.log(data)

@@ -34,6 +34,7 @@ public interface RuanJianService {
      * 根据id删除软件信息
      */
     int delRuanJian(int id);
+    int delHisRuanJian(int appid);
 
     /**
      * 根据id修改软件状态

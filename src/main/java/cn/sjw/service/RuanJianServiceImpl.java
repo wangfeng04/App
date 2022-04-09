@@ -71,6 +71,11 @@ public class RuanJianServiceImpl implements RuanJianService {
         return ruanJianMapper.delRuanJian(id);
     }
 
+    @Override
+    public int delHisRuanJian(int appid) {
+        return ruanJianMapper.delHisRuanJian(appid);
+    }
+
     /**
      * 根据id修改软件状态
      *

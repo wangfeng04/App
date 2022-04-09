@@ -136,8 +136,10 @@
     </insert>
     <!--根据  软件信息表的id  删除信息 -->
     <delete id="delRuanJian">
-        DELETE FROM histroyrj WHERE histroyrj.appid=#{id};
-        DELETE FROM ruanjian WHERE ruanjian.id=#{id}
+        DELETE FROM ruanjian WHERE id=#{id};
+    </delete>
+    <delete id="delHisRuanJian">
+        DELETE FROM histroyrj WHERE appid=#{appid};
     </delete>
     <!--    根据id修改软件状态-->
     <update id="updateZhuantai" parameterType="int">

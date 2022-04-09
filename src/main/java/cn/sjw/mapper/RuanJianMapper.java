@@ -21,6 +21,7 @@ public interface RuanJianMapper {
 
     //根据id删除软件信息
     int delRuanJian(@Param("id") int id);
+    int delHisRuanJian(@Param("appid") int appid);
 
     //根据id修改软件状态
     int updateZhuantai(@Param("id")int id,@Param("tai") int tai);
