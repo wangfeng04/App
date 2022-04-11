@@ -5,6 +5,7 @@ import cn.sjw.pojo.HistroryRJ;
 import cn.sjw.pojo.RuanJian;
 import cn.sjw.service.HistroryRJService;
 import cn.sjw.service.RuanJianService;
+import cn.sjw.util.UploadFileUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +59,7 @@ public class RuanJianController {
             pn = 1;
         }
         HttpSession session=request.getSession();
-       Integer id= (Integer) session.getAttribute("userid");
+        Integer id= (Integer) session.getAttribute("kaifazId");
         PageHelper.startPage(pn, 5);
         List<RuanJian> ruanJians = ruanJianService.queryRJByKaid(id);
         PageInfo<RuanJian> pageInfo = new PageInfo<RuanJian>(ruanJians, 5);
@@ -62,7 +67,7 @@ public class RuanJianController {
         return Mag.success().add("pageInfo", pageInfo);
     }
 
-    //根据 ID 查询软件及其历史版本信息
+    //根据 ID 查询软件信息
     @ResponseBody
     @GetMapping("/ruanJ/{id}")
     public Mag  getRuanJian(@PathVariable("id") Integer id) {
@@ -138,28 +143,6 @@ public class RuanJianController {
         }
     }
 
-//更新软件信息
-    @ResponseBody
-    @RequestMapping(value = "/update",method = RequestMethod.PUT)
-    public Mag getBook(@Valid RuanJian ruanJian, BindingResult result){
-        //创建一个错误的map集合
-        Map<String,Object> errorMap = new HashMap<String,Object>();
-        if(result.hasErrors()){
-            List<FieldError> errors = result.getFieldErrors();
-            for (FieldError error : errors) {
-                System.out.println("error fildes："+error.getField());
-                System.out.println("error info："+error.getDefaultMessage());
-                //将字段名称作为Key 错误提示信息作为 value 存入map
-                errorMap.put(error.getField(),error.getDefaultMessage());
-            }
-            //将错误信息的map加入到返回的Msg中返回给页面
-            return Mag.fail().add("errorMap",errorMap);
-        }else {
-            int i = ruanJianService.updateRuanJian(ruanJian);
-                return Mag.success();
-        }
-    }
-
     //删除图书
     @ResponseBody
     @RequestMapping(value = "/delete/{id}",method = RequestMethod.DELETE)
@@ -175,6 +158,8 @@ public class RuanJianController {
         }
         return Mag.fail().add("msg","error");
     }
+
+
 
 
 

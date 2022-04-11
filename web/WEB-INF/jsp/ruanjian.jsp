@@ -14,7 +14,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" rel="styleSheet" href="http://localhost:8080/ssm/dist/css/bootstrap.css"/>
+    <link type="text/css" rel="styleSheet" href="${APP_PATH}/dist/css/bootstrap.css"/>
     <style type="text/css">
         .table tbody tr td {
             overflow: hidden;
@@ -36,12 +36,10 @@ User user= (User) session.getAttribute("user");
             <div class="modal-header">                
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                               
                 <h4 class="modal-title" id="myModalLabel">添加软件</h4>            
             </div>
-                       
             <div class="modal-body">                
-                <form name="addForm" id="addForm" method="post">
+                <form name="addForm" id="addForm" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="appName">软件名称:</label>
                         <input type="text" class="form-control" name="appName" id="appName" placeholder="软件名称">
@@ -53,35 +51,96 @@ User user= (User) session.getAttribute("user");
                         <span class="help-block"></span>
                     </div>
                     <div class="form-group">
-                        <label for="bookCounts">软件大小:</label>
-                        <input type="text" class="form-control" name="bookCounts" id="bookCounts" placeholder="软件大小">
+                        <label for="appSize">软件大小:</label>
+                        <input type="text" class="form-control" name="appSize" id="appSize" placeholder="软件大小">
                         <span class="help-block"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="tai">状态:</label>
-                        <input type="text" class="form-control" name="tai" id="tai" placeholder="状态">
-                        <span class="help-block"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="pintai">所属平台:</label>
-                        <input type="text" class="form-control" name="pintai" id="pintai" placeholder="所属平台">
-                        <span class="help-block"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="onefenLei">一级分类:</label>
-                        <input type="text" class="form-control" name="onefenLei" id="onefenLei" placeholder="下载次数">
-                        <span class="help-block"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="twofenlei">二级分类:</label>
-                        <input type="text" class="form-control" name="twofenlei" id="twofenlei" placeholder="下载次数">
-                        <span class="help-block"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="threefenli">三级分类:</label>
-                        <input type="text" class="form-control" name="threefenli" id="threefenli" placeholder="下载次数">
-                        <span class="help-block"></span>
-                    </div>
+<div class="form-group" id="pintai">
+        <label>所属平台:</label>
+        <label class="radio-inline">
+        <input type="radio" name="pintai"  id="inlineRadio1" value="1"> 手机
+        </label>
+        <label class="radio-inline"><input type="radio" name="pintai" id="inlineRadio2" value="2"> 平板
+         </label>
+         <label class="radio-inline">
+         <input type="radio" name="pintai" id="inlineRadio3" value="3"> 通用
+         </label>
+ </div>
+<div class="form-group" id="onefenLei">
+         <label>一级分类:</label>
+         <label class="radio-inline">
+         <input type="radio" name="onefenLei"  id="onefenLei1" value="1"> 游戏
+         </label>
+         <label class="radio-inline">
+         <input type="radio" name="onefenLei" id="onefenLei2" value="2"> 应用
+         </label>
+ </div>
+<div class="form-group" id="twofenlei">
+       <label>二级分类:</label>
+       <label class="radio-inline">
+       <input type="radio" name="twofenlei"  id="twofenlei1" value="1"> 角色扮演
+       </label>
+       <label class="radio-inline">
+       <input type="radio" name="twofenlei" id="twofenlei2" value="2"> 休闲益智
+       </label>
+       <label class="radio-inline">
+       <input type="radio" name="twofenlei" id="twofenlei3" value="3"> 棋牌游戏
+       </label>
+    <br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+    <label class="radio-inline">
+       <input type="radio" name="twofenlei"  id="twofenlei4" value="4"> 系统工具
+       </label>
+       <label class="radio-inline">
+       <input type="radio" name="twofenlei" id="twofenlei5" value="5"> 拍摄美化
+       </label>
+       <label class="radio-inline">
+       <input type="radio" name="twofenlei" id="twofenlei6" value="6"> 网上购物
+       </label>
+ </div>
+<div class="form-group" id="threefenli">
+         <label>三级分类:</label>
+         <label class="radio-inline">
+             <input type="radio" name="threefenli"  id="threefenli1" value="1"> 动作
+         </label>
+         <label class="radio-inline">
+             <input type="radio" name="threefenli" id="threefenli2" value="2"> 冒险
+         </label>
+    <br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+         <label class="radio-inline">
+             <input type="radio" name="threefenli" id="threefenli3" value="3"> 消除
+         </label>
+         <label  class="radio-inline">
+             <input type="radio" name="threefenli"  id="threefenli4" value="4"> 休闲
+         </label>
+    <br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+         <label class="radio-inline">
+             <input type="radio" name="threefenli" id="threefenli5" value="5"> 斗地主
+         </label>
+         <label  class="radio-inline">
+         <input type="radio" name="threefenli" id="threefenli6" value="6"> 麻将
+         </label>
+    <br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+         <label class="radio-inline">
+             <input type="radio" name="threefenli"  id="threefenli7" value="7"> 浏览器
+         </label>
+         <label  class="radio-inline">
+             <input type="radio" name="threefenli" id="threefenli8" value="8"> 输入法
+         </label>
+    <br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+         <label class="radio-inline">
+             <input type="radio" name="threefenli" id="threefenli9" value="9"> 相机
+         </label >
+         <label  class="radio-inline">
+             <input type="radio" name="threefenli"  id="threefenli10" value="10"> 拍视频
+         </label>
+    <br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+         <label class="radio-inline">
+             <input type="radio" name="threefenli" id="threefenli11" value="11"> 商城
+         </label>
+         <label  class="radio-inline">
+               <input type="radio" name="threefenli" id="threefenli12" value="12"> 快递
+         </label>
+</div>
                     <div class="form-group">
                         <label for="bbH">版本号:</label>
                         <input type="text" class="form-control" name="bbH" id="bbH" placeholder="版本号">
@@ -95,8 +154,7 @@ User user= (User) session.getAttribute("user");
                     </div>
                     <div class="form-group">
                         <label for="LuJin">文件上传:</label>
-                        <input type="text" class="form-control" name="LuJin" id="LuJin" placeholder="文件上传">
-                        <span class="help-block"></span>
+                        <input type="file"  name="file" id="LuJin">
                     </div>
                 </form>
                        
@@ -126,10 +184,10 @@ User user= (User) session.getAttribute("user");
             </div>
                        
             <div class="modal-body">                
-                <form name="addForm" id="update_Form" method="post">
+                <form name="addForm" id="update_Form" enctype="multipart/form-data"  method="post">
                     <div class="form-group">
                         <label for="update_id">软件编号:</label>
-                        <p id="update_id"></p>
+                        <p id="update_id" name="id"></p>
                          <span class="help-block"></span>
                     </div>
                     <div class="form-group">
@@ -144,7 +202,7 @@ User user= (User) session.getAttribute("user");
                     </div>
                     <div class="form-group">
                         <label for="update_appSize">软件大小:</label>
-                        <input type="text" class="form-control" name="update_appSize" id="update_appSize"
+                        <input type="text" class="form-control" name="appSize" id="update_appSize"
                                placeholder="软件大小">
                         <span class="help-block"></span>
                     </div>
@@ -160,8 +218,7 @@ User user= (User) session.getAttribute("user");
                     </div>
                     <div class="form-group">
                         <label for="LuJin">文件上传:</label>
-                        <input type="text" class="form-control" name="LuJin" id="update_LuJin" placeholder="文件上传">
-                        <span class="help-block"></span>
+                        <input type="file"  name="updatefile" id="update_LuJin">
                     </div>
                 </form>
                        
@@ -244,11 +301,6 @@ User user= (User) session.getAttribute("user");
                         <p id="edit_appDetail"></p>
                         <span class="help-block"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="edit_LuJin">文件路径:</label>
-                        <a id="edit_LuJin"></a>
-                        <span class="help-block"></span>
-                    </div>
                 </form>
                        
             </div>
@@ -282,7 +334,7 @@ User user= (User) session.getAttribute("user");
                         <th>当前状态</th>
                         <th>版本号</th>
                         <th>软件介绍</th>
-                        <th>下载路径</th>
+                        <th>操作</th>
 
                     </tr>
                     <tbody id="his_table" >
@@ -356,7 +408,6 @@ User user= (User) session.getAttribute("user");
 
     //获取 json 数据
     function getPageNums(pn) {
-
         $.ajax({
             url: "${APP_PATH}/hstry",
             data: "pageNum="+pn,
@@ -366,6 +417,7 @@ User user= (User) session.getAttribute("user");
                 build_rj_table(data)
                 page_pageInfo_(data)
                 buid_RJlist(data)
+
             }
         })
     }
@@ -447,7 +499,9 @@ User user= (User) session.getAttribute("user");
         $("#rj_table").empty();
         //获取分页信息
         var rj = data.returnData.pageInfo.list;
+
         console.log(rj)
+
 
         $.each(rj, function (index, item) {
             //构建 td 存放数据
@@ -462,7 +516,6 @@ User user= (User) session.getAttribute("user");
             var xzCS_td = $("<td></td>").append(item.xzCS);
             var bbH_td = $("<td></td>").append(item.bbH);
             var appDetail_td = $("<td></td>").append(item.appDetail);
-
             //操作列的td
             //查看软件信息
             var eyes_btn = $("<button></button>").addClass("btn btn-sm btn-primary eyes_btn").attr("data-id", item.id).attr("data-pn", data.returnData.pageInfo.pageNum)
@@ -662,14 +715,13 @@ User user= (User) session.getAttribute("user");
             show: true
         })
 
-        //根据 ID 查询图书信息
+        //根据 ID 查询软件信息
         $.ajax({
             url: "${APP_PATH}/ruanJ/"+ $(this).attr("data-id"),
             method: "GET",
             success: function (data) {
                 console.log(data);
                 var rj =data.returnData.ruanJian;//后端将数据放进了Model，然后前端从中获取数据;
-
                 console.log(rj);
                 $("#edit_id").text(rj.id);
                 $("#edit_appName").text(rj.appName);
@@ -681,9 +733,7 @@ User user= (User) session.getAttribute("user");
                 $("#edit_kaifaze").text(rj.user.userName);
                 $("#edit_xzCS").text(rj.xzCS);
                 $("#edit_bbH").text(rj.bbH);
-                $("#edit_appDetail").text(rj.appDetail).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                $("#edit_LuJin").text(rj.luJin).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-
+                $("#edit_appDetail").text(rj.appDetail);
             }
 
         })
@@ -715,8 +765,7 @@ User user= (User) session.getAttribute("user");
                     var hiskaifaze_td = $("<td></td>").append(item.user.userName);
                     var hisbbH_td = $("<td></td>").append(item.bbH);
                     var hisappDetail_td = $("<td></td>").append(item.appDetail);
-                    var hisLuJin_td = $("<td></td>").append($("<button></butten>").append($("<a></a>").attr("href",item.luJin).append(item.luJin))).addClass("overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-
+                    var hisLuJin_td = $("<button></button>").addClass("btn btn-sm btn-danger hisLuJin_td").append($("<span></span>").addClass("glyphicon glyphicon-download-alt")).append("&nbsp;下载")
                     //将4个td 放入一个tr里
                     var tr = $("<tr></tr>")
                         .append(hisappName_td)
@@ -735,6 +784,21 @@ User user= (User) session.getAttribute("user");
         })
     })
 
+    //给删除添加点击事件
+    $(document).on("click", ".hisLuJin_td", function () {
+        if (confirm("你确定下载吗")) {
+            //发送删除的请求            
+            $.ajax({
+                url: "${APP_PATH}/xiazhai",
+                method: "POST",
+                success: function (data) {
+                    alert("下载成功！")
+                    console.log(data);
+                    getPageNums(1);
+                }
+            })
+        }
+    })
     //渲染修改界面
     $(document).on("click", ".update_btn", function () {
         //保存当前页码
@@ -757,8 +821,8 @@ User user= (User) session.getAttribute("user");
                 $("#update_APKName").val(rj.apkname);
                 $("#update_appSize").val(rj.appSize);
                 $("#update_bbH").val(rj.bbH);
-                $("#update_appDetail").val(rj.appDetail).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
-                $("#update_LuJin").val(rj.luJin).addClass("max-width: 150px;overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
+                $("#update_appDetail").val(rj.appDetail);
+                $("#update_LuJin").val(rj.luJin);
 
             }
 
@@ -771,35 +835,51 @@ User user= (User) session.getAttribute("user");
         if (!updateYanZheng()) {
             return false;
         }
-        $.ajax({
-            url: "${APP_PATH}/update",
-            method: "post",
-            data: $("#editForm").serialize() + "&_method=put",
-            success: function (data) {
-                if (data.code == 100) {
-                    // 获取后端验证结果
-                    var errorMap = data.returnData.errorMap;
-                    //将后端验证结果渲染到前端页面
-                    yanZhengXiaoGuo($("#update_appName"), "error", errorMap.appName)
-                    yanZhengXiaoGuo($("#update_APKName"), "error", errorMap.apkname);
-                    yanZhengXiaoGuo($("#update_appSize"), "error", errorMap.appSize);
-                    yanZhengXiaoGuo($("#update_bbH"), "error", errorMap.bbH)
-                    yanZhengXiaoGuo($("#update_appDetail"), "error", errorMap.appDetail)
-                    yanZhengXiaoGuo($("#update_LuJin"), "error", errorMap.luJin)
-                    console.log(data);
-                }
-                if (data.code == 200) {
-                    alert("修改成功！");
-                    $("#editModal").modal("hide");
-                    //跳转页面
-                    getPageNums($("#pn").val());
 
-                }
-
-            }
-
-        })
+        <%--var kaifazId="<%=session.getAttribute("kaifazId")%>";--%>
+        // console.log(kaifazId);
+        var formData = new FormData();
+        var id=$("#update_id").val()
+        var appName = $("#update_appName").val();
+        var APKName = $("#update_APKName").val();
+        var appSize = $("#update_appSize").val();
+        // var pintai = $("#pintai input").val();
+        // var onefenLei = $("#onefenLei  input").val();
+        // var twofenLei = $("#twofenlei  input").val();
+        // var threefenLi = $("#threefenli input").val();
+        var bbH = $("#update_bbH").val();
+        var appDetail = $("#update_appDetail").val();
+        formData.append("updatefile",$("#update_LuJin")[0].files[0]);
+        formData.append("appName",appName);
+        formData.append("APKName",APKName);
+        formData.append("id",Number(id));
+        // formData.append("kaifazId",Number(kaifazId));
+        formData.append("appSize",appSize);
+        // formData.append("appPinTai",Number(pintai));
+        // formData.append("onefenLei",Number(onefenLei));
+        // formData.append("twofenlei",Number(twofenLei));
+        // formData.append("threefenli",Number(threefenLi));
+        formData.append("bbH",bbH);
+        formData.append("appDetail",appDetail);
+                $.ajax({
+                    url:"${APP_PATH}/update",
+                    method:"post",
+                    data:formData,
+                    // 告诉jQuery不要去处理发送的数据
+                    processData : false,
+                    // 告诉jQuery不要去设置Content-Type请求头
+                    contentType : false,
+                    success:function (data) {
+                        console.log(data)
+                    },
+                    error:function (data) {
+                        console.log("error")
+                        console.log(data)
+                    }
     })
+    })
+
+
     //给删除添加点击事件
     $(document).on("click", ".rem_btn", function () {
         var pn = $(this).attr("data-pn");
@@ -820,6 +900,56 @@ User user= (User) session.getAttribute("user");
             })
         }
     })
+    //添加模态框
+    $("#addBtn").click(function () {
+        $("#addModal").modal({
+            backdrop: "static",
+            show: true//点击背景 模态框不会消失
+        })
+
+    })
+    $("#addSubmit").click(function () {
+        var kaifazId="<%=session.getAttribute("kaifazId")%>";
+        console.log(kaifazId);
+        var formData = new FormData();
+        var appName = $("#appName").val();
+        var APKName = $("#APKName").val();
+        var appSize = $("#appSize").val();
+        var pintai = $("#pintai input").val();
+        var onefenLei = $("#onefenLei  input").val();
+        var twofenLei = $("#twofenlei  input").val();
+        var threefenLi = $("#threefenli input").val();
+        var bbH = $("#bbH").val();
+        var appDetail = $("#appDetail").val();
+        formData.append("file",$("#LuJin")[0].files[0]);
+        formData.append("appName",appName);
+        formData.append("APKName",APKName);
+        formData.append("kaifazId",Number(kaifazId));
+        formData.append("appSize",appSize);
+        formData.append("appPinTai",Number(pintai));
+        formData.append("onefenLei",Number(onefenLei));
+        formData.append("twofenlei",Number(twofenLei));
+        formData.append("threefenli",Number(threefenLi));
+        formData.append("bbH",bbH);
+        formData.append("appDetail",appDetail);
+        $.ajax({
+            url:"${APP_PATH}/file",
+            method:"post",
+            data:formData,
+            // 告诉jQuery不要去处理发送的数据
+            processData : false,
+            // 告诉jQuery不要去设置Content-Type请求头
+            contentType : false,
+            success:function (data) {
+                console.log(data)
+            },
+            error:function (data) {
+                console.log("error")
+                console.log(data)
+            }
+        })
+
+})
 
 
 

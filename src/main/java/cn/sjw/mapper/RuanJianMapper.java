@@ -53,4 +53,5 @@ public interface RuanJianMapper {
      */
     List<RuanJian> queryFenlei(int f1id, int f2id, int f3id);
 
+
 }

@@ -39,7 +39,7 @@ public class RuanJian {
     private String bbH;                             //最新版本号
     @Pattern(regexp = "^[A-Za-z0-9_\\u2E80-\\u9FFF]{5,100}$", message = "描述信息必须在5-100个字之内！")
     private String appDetail;                       //软件介绍
-    @NotNull
+
     private String LuJin;                           //下载路径
 
 

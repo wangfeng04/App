@@ -24,6 +24,7 @@ public interface RuanJianService {
      * 根据id修改软件信息
      */
     int updateRuanJian(RuanJian ruanJian);
+    //将软件信息添加到软件历史信息表中
 
     /**
      * 新增软件信息
@@ -49,7 +50,7 @@ public interface RuanJianService {
     /**
      * 根据分类查询软件信息
      *
-     * @param queryFenlei(int f1id)  一级分类
+     * @param ( f1id)  一级分类
      * @return List<RuanJian>
      */
     List<RuanJian> queryFenlei(int f1id);
@@ -57,7 +58,7 @@ public interface RuanJianService {
     /**
      * 根据分类查询软件信息
      *
-     * @param queryFenlei(int f1id,int f2id)   二级分类
+     * @param ( f1id,int f2id)   二级分类
      * @return List<RuanJian>
      */
     List<RuanJian> queryFenlei(int f1id, int f2id);
@@ -65,8 +66,9 @@ public interface RuanJianService {
     /**
      * 根据分类查询软件信息
      *
-     * @param queryFenlei(int f1id,int f2id,int f3id)   三级分类
+     * @param ( f1id,int f2id,int f3id)   三级分类
      * @return List<RuanJian>
      */
     List<RuanJian> queryFenlei(int f1id, int f2id, int f3id);
+
 }

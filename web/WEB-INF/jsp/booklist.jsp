@@ -58,7 +58,6 @@
     </div>
 </div>
 
-
 <!-- editModal -->
 <div class="modal fade" id="editModal" role="dialog" aria-labelledby="myModalLabel2">    
     <div class="modal-dialog" role="document">        
@@ -188,7 +187,7 @@
         })
     }
 
-    分页信息
+    // 分页信息
     function page_pageInfo_(data) {
         $("#page_pageInfo").empty();
         var booksPageInfo = data.returnData.booksPageInfo;

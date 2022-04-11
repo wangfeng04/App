@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletContext;
@@ -14,7 +15,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 @Controller
-public class FileController {
+public class GetFileController {
     /**
      * 文件下载
      *
@@ -22,7 +23,7 @@ public class FileController {
      * @return
      * @throws IOException
      */
-    @RequestMapping("/testDown")
+    @PostMapping("/xiazhai")
     public ResponseEntity<byte[]> testResponseEntity(HttpSession session) throws IOException {
         ServletContext servletContext = session.getServletContext();
         //获取服务器的真实路径
