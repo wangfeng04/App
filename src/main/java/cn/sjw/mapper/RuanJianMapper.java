@@ -18,7 +18,7 @@ public interface RuanJianMapper {
 
     //新增软件信息
     int addRuanJian(RuanJian ruanJian);
-
+      int  addHisRJXX();
     //根据id删除软件信息
     int delRuanJian(@Param("id") int id);
     int delHisRuanJian(@Param("appid") int appid);

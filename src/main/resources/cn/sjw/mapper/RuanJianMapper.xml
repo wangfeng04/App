@@ -106,7 +106,7 @@
     </select>
     <!--  根据id修改软件信息   的 同时给 软件历史信息表 添加记录   -->
     <update id="updateRuanJian" parameterType="RuanJian" >
-        UPDATE  ruanjian
+        UPDATE  `ruanjian`
         SET
         appName = #{appName},
         APKName = #{APKName},
@@ -115,23 +115,22 @@
         appDetail=#{appDetail},
         LuJin=#{LuJin}
         WHERE
-        id = #{id} ;
-       INSERT INTO `histroyrj`(`appid`,`appName`,`APKName`,`appSize`,`kaifazId`,`zhantai`,`bbH`,`appDetail`,`LuJin`)
-        SELECT id,`appName`,`APKName`,appSize,kaifazId,tai,`bbH`,`appDetail`,`LuJin`
+        id = #{id};
+
+    </update>
+<!--    将软件信息插入软件历史信息表-->
+    <insert id="addHisRJXX">
+        INSERT INTO `histroyrj`(`appid`,`appName`,`APKName`,`appSize`,`kaifazId`,`zhantai`,`bbH`,`appDetail`,`LuJin`)
+        SELECT `id`,`appName`,`APKName`,`appSize`,`kaifazId`,`tai`,`bbH`,`appDetail`,`LuJin`
         FROM `ruanjian`
         WHERE NOT EXISTS
         (SELECT * FROM histroyrj WHERE histroyrj.`APKName`=ruanjian.`APKName` )
-    </update>
+    </insert>
     <!--  增加软件信息    -->
     <insert id="addRuanJian" parameterType="RuanJian">
         INSERT INTO
         `ruanjian`(`appName`,`APKName`,`appSize`,`kaifazId`,`appPinTai`,`onefenLei`,`twofenlei`,`threefenli`,`bbH`,`appDetail`,`LuJin`)
         VALUES(#{appName},#{APKName},#{appSize},#{kaifazId},#{appPinTai},#{onefenLei},#{twofenlei},#{threefenli},#{bbH},#{appDetail},#{LuJin});
-        INSERT INTO `histroyrj`(`appid`,`appName`,`APKName`,`appSize`,`kaifazId`,`zhantai`,`bbH`,`appDetail`,`LuJin`)
-        SELECT id,`appName`,`APKName`,appSize,kaifazId,tai,`bbH`,`appDetail`,`LuJin`
-        FROM `ruanjian`
-        WHERE NOT EXISTS
-        (SELECT * FROM histroyrj WHERE histroyrj.`APKName`=ruanjian.`APKName` )
     </insert>
 
     <!--根据  软件信息表的id  删除信息 -->

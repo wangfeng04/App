@@ -539,24 +539,23 @@ User user= (User) session.getAttribute("user");
 
 
             if (item.zhuanTai.tai=="待审核") {
-                del_btn.addClass("disabled");
-                edit_btn.addClass("disabled");
-
+                del_btn.prop('disabled', true);
+                edit_btn.prop('disabled', true);
             }
             if (item.zhuanTai.tai=="审核通过") {
-                del_btn.addClass("disabled");
+                del_btn.prop('disabled', true);
 
             }
             if (item.zhuanTai.tai=="审核未通过") {
-                del_btn.addClass("disabled");
-                edit_btn.addClass("disabled");
+                del_btn.prop('disabled', true);
+                edit_btn.prop('disabled', true);
             }
             if (item.zhuanTai.tai=="已上架") {
-                edit_btn.addClass("disabled")
-
+                edit_btn.prop('disabled', true);
+                update_btn.prop('disabled', true);
             }
             if (item.zhuanTai.tai=="已下架") {
-                del_btn.addClass("disabled");
+                del_btn.prop('disabled', true);
 
             }
 
@@ -681,8 +680,7 @@ User user= (User) session.getAttribute("user");
     })
     //修改软件状态为  下架
     $(document).on("click", ".del_btn", function () {
-        //保存当前页码
-        var p = $(this).attr("data-pn");
+
         //根据 ID 查询图书信息
         $.ajax({
             url: "${APP_PATH}/xiajia/"+$(this).attr("data-id"),
@@ -817,12 +815,13 @@ User user= (User) session.getAttribute("user");
                 var rj =data.returnData.ruanJian;//后端将数据放进了Model，然后前端从中获取数据;
                 console.log(rj);
                 $("#update_id").text(rj.id);
+                sessionStorage.setItem("id",rj.id);
                 $("#update_appName").val(rj.appName);
                 $("#update_APKName").val(rj.apkname);
                 $("#update_appSize").val(rj.appSize);
                 $("#update_bbH").val(rj.bbH);
                 $("#update_appDetail").val(rj.appDetail);
-                $("#update_LuJin").val(rj.luJin);
+
 
             }
 
@@ -831,34 +830,26 @@ User user= (User) session.getAttribute("user");
 
     //修改图书
     $("#updateSubmit").on("click", function () {
+        //保存当前页码
+        var p = $(this).attr("data-pn");
         //进行数据校验
         if (!updateYanZheng()) {
             return false;
         }
 
-        <%--var kaifazId="<%=session.getAttribute("kaifazId")%>";--%>
-        // console.log(kaifazId);
         var formData = new FormData();
-        var id=$("#update_id").val()
+        var id=Number(sessionStorage.getItem("id"));
+        console.log(id);
         var appName = $("#update_appName").val();
         var APKName = $("#update_APKName").val();
         var appSize = $("#update_appSize").val();
-        // var pintai = $("#pintai input").val();
-        // var onefenLei = $("#onefenLei  input").val();
-        // var twofenLei = $("#twofenlei  input").val();
-        // var threefenLi = $("#threefenli input").val();
         var bbH = $("#update_bbH").val();
         var appDetail = $("#update_appDetail").val();
         formData.append("updatefile",$("#update_LuJin")[0].files[0]);
         formData.append("appName",appName);
         formData.append("APKName",APKName);
-        formData.append("id",Number(id));
-        // formData.append("kaifazId",Number(kaifazId));
+        formData.append("id",id);
         formData.append("appSize",appSize);
-        // formData.append("appPinTai",Number(pintai));
-        // formData.append("onefenLei",Number(onefenLei));
-        // formData.append("twofenlei",Number(twofenLei));
-        // formData.append("threefenli",Number(threefenLi));
         formData.append("bbH",bbH);
         formData.append("appDetail",appDetail);
                 $.ajax({
@@ -871,10 +862,15 @@ User user= (User) session.getAttribute("user");
                     contentType : false,
                     success:function (data) {
                         console.log(data)
+                        alert("修改成功！")
+                        $("#updateModal").modal("hide");
+                        getPageNums(pn);
                     },
                     error:function (data) {
+
                         console.log("error")
                         console.log(data)
+                        alert("APK名称不能与之前的相同！！！")
                     }
     })
     })
@@ -942,6 +938,8 @@ User user= (User) session.getAttribute("user");
             contentType : false,
             success:function (data) {
                 console.log(data)
+                alert("添加成功！")
+                $("#addModal").modal("hide");
             },
             error:function (data) {
                 console.log("error")

@@ -54,10 +54,12 @@ if (!file.isEmpty()) {
     file.transferTo(filePath);
 }
 int i=ruanJianService.addRuanJian(ruanJian);
-
-if (i>0){
-       return Mag.success().add("info","软件添加成功！");
-}
+int n=ruanJianService.addHisRJXX();
+        if (i>0){
+            if (n>0) {
+                return Mag.success().add("info","软件添加成功！");
+            }
+        }
 return Mag.fail();
 
     }
@@ -96,9 +98,11 @@ return Mag.fail();
             file.transferTo(filePath);
         }
         int i = ruanJianService.updateRuanJian(ruanJian);
-
+        int n=ruanJianService.addHisRJXX();
         if (i>0){
-            return Mag.success().add("info","软件添加成功！");
+            if (n>0) {
+                return Mag.success().add("info","软件修改成功！");
+            }
         }
         return Mag.fail();
 

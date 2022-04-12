@@ -62,6 +62,16 @@ public class RuanJianServiceImpl implements RuanJianService {
     }
 
     /**
+     * 将软件信息插入软件历史信息
+     *
+     * @return
+     */
+    @Override
+    public int addHisRJXX() {
+        return ruanJianMapper.addHisRJXX();
+    }
+
+    /**
      * 根据id删除软件信息
      *
      * @param id

@@ -32,6 +32,11 @@ public interface RuanJianService {
     int addRuanJian(RuanJian ruanJian);
 
     /**
+     * 将软件信息插入软件历史信息
+     * @return
+     */
+    int  addHisRJXX();
+    /**
      * 根据id删除软件信息
      */
     int delRuanJian(int id);
