@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" rel="styleSheet" href="http://localhost:8080/ssm/dist/css/bootstrap.css"/>
+    <link type="text/css" rel="styleSheet" href="${APP_PATH}/dist/css/bootstrap.css"/>
     <style type="text/css">
         .table tbody tr td {
             overflow: hidden;
@@ -286,12 +286,12 @@
             var ac = $("<td></td>").append(eyes_btn).append(edit_btn).append(del_btn).append(his_btn)
 
             if (item.zhuanTai.tai=="审核通过") {
-                del_btn.addClass("disabled");
-                edit_btn.addClass("disabled");
+                del_btn.prop('disabled', true);
+                edit_btn.prop('disabled', true);
             }
             if (item.zhuanTai.tai=="审核未通过") {
-                del_btn.addClass("disabled");
-                edit_btn.addClass("disabled");
+                del_btn.prop('disabled', true);
+                edit_btn.prop('disabled', true);
             }
 
             //将4个td 放入一个tr里

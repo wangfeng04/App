@@ -247,7 +247,7 @@ User user= (User) session.getAttribute("user");
                 <h4 class="modal-title" id="myModalLabel2">软件信息</h4>            
             </div>
             <%--      当前软件信息           --%>
-            <div class="modal-body">                
+            <div class="modal-body center-block">                
                 <form name="addForm" id="updateForm" method="post">
                     <div class="form-group">
                         <div class="form-group">
@@ -324,8 +324,8 @@ User user= (User) session.getAttribute("user");
                                
                 <h4 class="modal-title" id="hisModal">软件历史信息</h4>            
             </div>
-            <div class="container table-responsive">
-                <table   class="table table-striped  table-bordered table-hover table-condensed">
+            <div class="container center-block table-responsive">
+                <table   class="center-block table table-striped  table-bordered table-hover table-condensed">
                     <tr >
                         <th>软件名称</th>
                         <th>APK名称</th>
@@ -361,9 +361,9 @@ User user= (User) session.getAttribute("user");
         </button>
     </div>
 </div>
-<div class="container table-responsive">
+<div class="container center-block table-responsive">
 
-    <table style="overflow: scroll;  text-overflow:ellipsis; white-space: nowrap;"  class="table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
+    <table style="overflow: scroll;  text-overflow:ellipsis; white-space: nowrap;"  class="center-block  table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
         <tr>
             <th style="overflow:hidden;white-space: nowrap;">软件编号</th>
             <th>软件名称</th>
@@ -499,10 +499,6 @@ User user= (User) session.getAttribute("user");
         $("#rj_table").empty();
         //获取分页信息
         var rj = data.returnData.pageInfo.list;
-
-        console.log(rj)
-
-
         $.each(rj, function (index, item) {
             //构建 td 存放数据
             var id_td = $("<td></td>").append(item.id);

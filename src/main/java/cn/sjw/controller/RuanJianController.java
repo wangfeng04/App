@@ -51,7 +51,7 @@ public class RuanJianController {
         //将分页信息传入自定义类的returnData
         return Mag.success().add("pageInfo", pageInfo);
     }
-    //    查询所有软件信息
+    //    查询所有软件信息   开发者表
     @ResponseBody
     @GetMapping("/hstry")
     public Mag ruanJianList(@RequestParam(value = "pageNum", defaultValue = "1") Integer pn, HttpServletRequest request) {

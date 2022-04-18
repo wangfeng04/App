@@ -58,6 +58,8 @@
         AND r.twofenlei=f2.f2id
         AND r.threefenli=f3.f3id
         AND r.tai=z.id
+        AND  r.tai IN(1,2,3)
+        ORDER BY id ASC
     </select>
     <select id="queryRJByKaid" resultMap="RuanJiamMap">
          SELECT
@@ -80,6 +82,7 @@
         AND r.threefenli=f3.f3id
         AND r.tai=z.id
         AND r.kaifazId=#{kaifazId}
+        ORDER BY id ASC
     </select>
     <!--  根据id查询软件信息  -->
     <select id="queryRJxx" parameterType="int" resultMap="RuanJiamMap">
@@ -103,11 +106,13 @@
         AND r.threefenli=f3.f3id
         AND r.tai=z.id
         AND r.id=#{id}
+        ORDER BY id ASC
     </select>
     <!--  根据id修改软件信息   的 同时给 软件历史信息表 添加记录   -->
     <update id="updateRuanJian" parameterType="RuanJian" >
         UPDATE  `ruanjian`
         SET
+        tai=1,
         appName = #{appName},
         APKName = #{APKName},
         appSize=#{appSize},
@@ -151,7 +156,7 @@
     </update>
     <!--  搜索时使用 的  模糊查询  -->
     <select id="selectRuanJian" resultMap="RuanJiamMap">
-        SELECT
+      SELECT
         r.id id,
         r.appName appName,
         r.APKName APKName,
@@ -164,24 +169,25 @@
         z.tai tai,r.xzCS xzCS,
         r.bbH bbH,r.appDetail appDetail,r.LuJin LuJin
         FROM `ruanjian` r,`user` u,`pintai` p ,`fenlei1` f1,`fenlei2` f2,`fenlei3` f3,`zhuantai` z
-        <where>
-            appName like concat("%",#{name},"%"),
-            OR tai like concat("%",#{name},"%"),
-            OR kaifaze like concat("%",#{name},"%"),
-            OR appDetail like concat("%",#{name},"%"),
-            OR onefenLei like concat("%",#{name},"%"),
-            OR twofenlei like concat("%",#{name},"%"),
-            OR threefenli like concat("%",#{name},"%"),
-            OR 1=1
-
-        </where>
-
+        WHERE r.kaifazId=u.id
+        AND r.appPinTai=p.id
+        AND r.onefenLei=f1.f1id
+        AND r.twofenlei=f2.f2id
+        AND r.threefenli=f3.f3id
+        AND r.tai=z.id
+        AND    appName LIKE CONCAT("%",#(name),"%")
+            OR appDetail LIKE CONCAT("%",#(name),"%")
+            OR onefenLei LIKE CONCAT("%",#(name),"%")
+            OR twofenlei LIKE CONCAT("%",#(name),"%")
+            OR threefenli LIKE CONCAT("%",#(name),"%")
+        ORDER BY id ASC
     </select>
     <!--  通过三级分类来进行数据  -->
     <select id="queryFenlei" resultType="RuanJian">
         SELECT
         id,`appName`,`APKName`,`appSize`,`kaifazId`,`appPinTai`,`onefenLei`,`twofenlei`,`threefenli`,`tai`,`xzCS`,`bbH`,`appDetail`,`LuJin`
         FROM ruanjian
+        ORDER BY id ASC
         <trim prefix="where" prefixOverrides="AND" suffixOverrides=",">
             <if test="onefenLei != null">
                 AND onefenLei = #{onefenLei},
