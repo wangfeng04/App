@@ -19,9 +19,39 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-
+        }
+        #myInput {
+            background-image: url('https://static.runoob.com/images/mix/searchicon.png'); /* 添加搜索按钮 */
+            background-position: 10px 12px; /* 定位搜索按钮 */
+            background-repeat: no-repeat; /* 图片不重复 */
+            width: 100%; /* 全屏幕显示 */
+            font-size: 16px; /* 字体大小 */
+            padding: 12px 20px 12px 40px; /* 设置内边距 */
+            border: 1px solid #ddd; /* 添加灰色边框 */
+            margin-bottom: 12px; /* 添加顶部的外边距 */
         }
 
+        #myTable {
+            border-collapse: collapse; /* 折叠边框 */
+            width: 100%; /* 全屏幕显示 */
+            border: 1px solid #ddd; /* 设置灰色边框 */
+            font-size: 18px; /* 字体大小 */
+        }
+
+        #myTable th, #myTable td {
+            text-align: left; /* 文本靠左对齐 */
+            padding: 12px; /* 设置内边距 */
+        }
+
+        #myTable tr {
+            /* 每一行设置底部边框*/
+            border-bottom: 1px solid #ddd;
+        }
+
+        #myTable tr.header, #myTable tr:hover {
+            /* 表格头部设置背景 */
+            background-color: #f1f1f1;
+        }
     </style>
 </head>
 <body>
@@ -147,52 +177,18 @@
     </div>
 </div>
 
-<%--&lt;%&ndash;三级分类&ndash;%&gt;--%>
-<%--<div class="dropdown">--%>
-<%--    <a id="dLabel" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">--%>
-<%--        <h3 class="clear" class="col-lg-5"> 分类</h3>--%>
-<%--        <span class="caret"></span>--%>
-<%--    </a>--%>
-<%--    <a id="d1Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true"--%>
-<%--       aria-expanded="false">--%>
-<%--        一级分类--%>
-<%--        <span class="caret"></span>--%>
-<%--    </a>--%>
-
-<%--    <ul class="dropdown-menu" aria-labelledby="d1Label">--%>
-
-<%--    </ul>--%>
-<%--    <a id="d2Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true"--%>
-<%--       aria-expanded="false">--%>
-<%--        二级分类--%>
-<%--        <span class="caret"></span>--%>
-<%--    </a>--%>
-
-<%--    <ul class="dropdown-menu" aria-labelledby="dLabel">--%>
-
-<%--    </ul>--%>
-<%--    <a id="d3Label" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true"--%>
-<%--       aria-expanded="false">--%>
-<%--        三级分类--%>
-<%--        <span class="caret"></span>--%>
-<%--    </a>--%>
-
-<%--    <ul class="dropdown-menu" aria-labelledby="dLabel">--%>
-
-<%--    </ul>--%>
-
-<%--</div>--%>
-
-
 <%out.print(request.getContextPath());%>
 <%-- 软件信息列表 --%>
 <div><h1 class="col-lg-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;软件信息审核列表</h1>
+    <div class="col-lg-2 col-lg-offset-3">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索...">
+    </div>
 </div>
 <div class="container table-responsive">
 
-    <table style="overflow: scroll;  text-overflow:ellipsis; white-space: nowrap;"  class="table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
-        <tr>
-            <th style="overflow:hidden;white-space: nowrap;">软件编号</th>
+    <table id="myTable" style="overflow: scroll;  text-overflow:ellipsis; white-space: nowrap;"  class="table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
+        <tr class="header">
+            <th>软件编号</th>
             <th>软件名称</th>
             <th>APK名称</th>
             <th>软件大小</th>
@@ -519,8 +515,26 @@
         })
     })
 
+    function myFunction() {
+        // 声明变量
+        var input, filter, table, tr, td, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
 
-
+        // 循环表格每一行，查找匹配项
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
 </script>
 </body>
 </html>

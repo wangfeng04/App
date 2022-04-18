@@ -45,9 +45,9 @@ public class RuanJianController {
         if (pn < 1) {
             pn = 1;
         }
-        PageHelper.startPage(pn, 5);
+        PageHelper.startPage(pn, 7);
         List<RuanJian> ruanJians = ruanJianService.queryRJ();
-        PageInfo<RuanJian> pageInfo = new PageInfo<RuanJian>(ruanJians, 5);
+        PageInfo<RuanJian> pageInfo = new PageInfo<RuanJian>(ruanJians, 7);
         //将分页信息传入自定义类的returnData
         return Mag.success().add("pageInfo", pageInfo);
     }
@@ -60,9 +60,9 @@ public class RuanJianController {
         }
         HttpSession session=request.getSession();
         Integer id= (Integer) session.getAttribute("kaifazId");
-        PageHelper.startPage(pn, 5);
+        PageHelper.startPage(pn, 7);
         List<RuanJian> ruanJians = ruanJianService.queryRJByKaid(id);
-        PageInfo<RuanJian> pageInfo = new PageInfo<RuanJian>(ruanJians, 5);
+        PageInfo<RuanJian> pageInfo = new PageInfo<RuanJian>(ruanJians, 7);
         //将分页信息传入自定义类的returnData
         return Mag.success().add("pageInfo", pageInfo);
     }

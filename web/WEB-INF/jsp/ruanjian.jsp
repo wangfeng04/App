@@ -20,7 +20,28 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+        }
 
+        #myTable {
+            border-collapse: collapse; /* 折叠边框 */
+            width: 100%; /* 全屏幕显示 */
+            border: 1px solid #ddd; /* 设置灰色边框 */
+            font-size: 18px; /* 字体大小 */
+        }
+
+        #myTable th, #myTable td {
+            text-align: left; /* 文本靠左对齐 */
+            padding: 12px; /* 设置内边距 */
+        }
+
+        #myTable tr {
+            /* 每一行设置底部边框*/
+            border-bottom: 1px solid #ddd;
+        }
+
+        #myTable tr.header, #myTable tr:hover {
+            /* 表格头部设置背景 */
+            background-color: #f1f1f1;
         }
 
     </style>
@@ -363,8 +384,8 @@ User user= (User) session.getAttribute("user");
 </div>
 <div class="container center-block table-responsive">
 
-    <table style="overflow: scroll;  text-overflow:ellipsis; white-space: nowrap;"  class="center-block  table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
-        <tr>
+    <table id="myTable" style="overflow: scroll;  text-overflow:ellipsis; white-space: nowrap;"  class="center-block  table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
+        <tr id="header">
             <th style="overflow:hidden;white-space: nowrap;">软件编号</th>
             <th>软件名称</th>
             <th>APK名称</th>
