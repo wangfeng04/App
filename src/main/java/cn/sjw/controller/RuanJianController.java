@@ -76,6 +76,7 @@ public class RuanJianController {
         return Mag.success().add("ruanJian",ruanJian);
     }
 
+
     //根据 ID 查询软件历史版本信息
     @ResponseBody
     @GetMapping("/histry/{appid}")
