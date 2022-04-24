@@ -112,18 +112,18 @@ public class RuanJianServiceImpl implements RuanJianService {
      * @param f1id
      * @return List<RuanJian>
      */
-    @Override
-    public List<RuanJian> queryFenlei(int f1id) {
-        return ruanJianMapper.queryFenlei(f1id);
-    }
-
-    @Override
-    public List<RuanJian> queryFenlei(int f1id, int f2id) {
-        return ruanJianMapper.queryFenlei(f1id, f2id);
-    }
-
-    @Override
-    public List<RuanJian> queryFenlei(int f1id, int f2id, int f3id) {
-        return ruanJianMapper.queryFenlei(f1id, f2id, f3id);
-    }
+//    @Override
+//    public List<RuanJian> queryFenlei(int f1id) {
+//        return ruanJianMapper.queryFenlei(f1id);
+//    }
+//
+//    @Override
+//    public List<RuanJian> queryFenlei(int f1id, int f2id) {
+//        return ruanJianMapper.queryFenlei(f1id, f2id);
+//    }
+//
+//    @Override
+//    public List<RuanJian> queryFenlei(int f1id, int f2id, int f3id) {
+//        return ruanJianMapper.queryFenlei(f1id, f2id, f3id);
+//    }
 }

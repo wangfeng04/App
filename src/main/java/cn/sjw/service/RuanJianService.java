@@ -11,10 +11,12 @@ public interface RuanJianService {
      */
 
     List<RuanJian> queryRJ();
+
     /**
      * 查看软件信息列表   开发者表
      */
     List<RuanJian> queryRJByKaid(int kaifazId);
+
     /**
      * 根据id查询软件信息
      */
@@ -33,13 +35,16 @@ public interface RuanJianService {
 
     /**
      * 将软件信息插入软件历史信息
+     *
      * @return
      */
-    int  addHisRJXX();
+    int addHisRJXX();
+
     /**
      * 根据id删除软件信息
      */
     int delRuanJian(int id);
+
     int delHisRuanJian(int appid);
 
     /**
@@ -52,28 +57,28 @@ public interface RuanJianService {
      */
     List<RuanJian> selectRuanJian(String name);
 
-    /**
-     * 根据分类查询软件信息
-     *
-     * @param ( f1id)  一级分类
-     * @return List<RuanJian>
-     */
-    List<RuanJian> queryFenlei(int f1id);
-
-    /**
-     * 根据分类查询软件信息
-     *
-     * @param ( f1id,int f2id)   二级分类
-     * @return List<RuanJian>
-     */
-    List<RuanJian> queryFenlei(int f1id, int f2id);
-
-    /**
-     * 根据分类查询软件信息
-     *
-     * @param ( f1id,int f2id,int f3id)   三级分类
-     * @return List<RuanJian>
-     */
-    List<RuanJian> queryFenlei(int f1id, int f2id, int f3id);
+//    /**
+//     * 根据分类查询软件信息
+//     *
+//     * @param (f1id)  一级分类
+//     * @return List<RuanJian>
+//     */
+//    List<RuanJian> queryFenlei(int f1id);
+//
+//    /**
+//     * 根据分类查询软件信息
+//     *
+//     * @param (f1id,int f2id)   二级分类
+//     * @return List<RuanJian>
+//     */
+//    List<RuanJian> queryFenlei(int f1id, int f2id);
+//
+//    /**
+//     * 根据分类查询软件信息
+//     *
+//     * @param (f1id,int f2id,int f3id)   三级分类
+//     * @return List<RuanJian>
+//     */
+//    List<RuanJian> queryFenlei(int f1id, int f2id, int f3id);
 
 }

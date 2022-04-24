@@ -12,6 +12,7 @@ import java.util.List;
 public class HistroryRJServiceImpl implements HistroryRJService {
     @Autowired
     private HistroryRJMapper histroryRJMapper;
+
     /**
      * 查询软件历史数据
      *

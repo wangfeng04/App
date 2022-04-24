@@ -36,7 +36,7 @@
         h.LuJin LuJin
         FROM `histroyrj` h,`user` u ,`zhuantai2` z
         WHERE
-         h.kaifazId=u.id
+        h.kaifazId=u.id
         AND h.zhantai=z.tai1Id
         AND h.zhantai=z.tai1Id
         AND h.appid=#{appid}

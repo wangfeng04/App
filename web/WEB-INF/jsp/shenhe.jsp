@@ -20,6 +20,7 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
         #myInput {
             background-image: url('https://static.runoob.com/images/mix/searchicon.png'); /* 添加搜索按钮 */
             background-position: 10px 12px; /* 定位搜索按钮 */
@@ -62,10 +63,11 @@
         <div class="modal-content">
             <div class="modal-header">                
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span></button>     
+                    <span aria-hidden="true">&times;</span></button>
+                     
                 <h4 class="modal-title" id="myModalLabel2">软件信息</h4>            
             </div>
-<%--      当前软件信息           --%>
+            <%--      当前软件信息           --%>
             <div class="modal-body">                
                 <form name="addForm" id="updateForm" method="post">
                     <div class="form-group">
@@ -131,7 +133,7 @@
                      
             <div class="modal-footer">                
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-  
+                 
             </div>
                    
         </div>
@@ -140,17 +142,19 @@
 </div>
 <!-- 当前软件的历史信息 -->
 <div class="modal fade modal-body" id="histroyModal" role="dialog" aria-labelledby="myModalLabel2">    
-    <div class="modal-dialog" style="height:900px;width:900px;text-overflow:ellipsis; white-space: nowrap; overflow:hidden;" role="document">        
+    <div class="modal-dialog"
+         style="height:900px;width:900px;text-overflow:ellipsis; white-space: nowrap; overflow:hidden;" role="document">
+               
         <div class="modal-content">
             <div class="modal-header">                
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close searcher-text" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
                                
                 <h4 class="modal-title" id="hisModal">软件历史信息</h4>            
             </div>
             <div class="container table-responsive">
-                <table   class="table table-striped  table-bordered table-hover table-condensed">
-                    <tr >
+                <table class="table table-striped  table-bordered table-hover table-condensed">
+                    <tr>
                         <th>软件名称</th>
                         <th>APK名称</th>
                         <th>软件大小</th>
@@ -161,7 +165,7 @@
                         <th>下载路径</th>
 
                     </tr>
-                    <tbody id="his_table" >
+                    <tbody id="his_table">
 
                     </tbody>
                 </table>
@@ -179,14 +183,16 @@
 
 <%out.print(request.getContextPath());%>
 <%-- 软件信息列表 --%>
-<div><h1 class="col-lg-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;软件信息审核列表</h1>
+<div style="margin:50px auto">
+    <h1 class="col-lg-6" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;软件信息审核列表</h1>
     <div class="col-lg-2 col-lg-offset-3">
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索...">
     </div>
 </div>
 <div class="container table-responsive">
 
-    <table id="myTable" style="overflow: scroll;  text-overflow:ellipsis; white-space: nowrap;"  class="table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
+    <table id="myTable" style="overflow: scroll;  text-overflow:ellipsis; white-space: nowrap;"
+           class="table table-hover table-striped border-collapse table-bordered  table-condensed  table-layout:auto">
         <tr class="header">
             <th>软件编号</th>
             <th>软件名称</th>
@@ -225,7 +231,6 @@
     $(function () {
         getPageNums(1)
     })
-
     //获取 json 数据
     function getPageNums(pn) {
 
@@ -241,7 +246,6 @@
             }
         })
     }
-
     //构建软件信息列表
     function build_rj_table(data) {
         //清空历史数据
@@ -281,11 +285,11 @@
             //将操作按钮放入操作的td列
             var ac = $("<td></td>").append(eyes_btn).append(edit_btn).append(del_btn).append(his_btn)
 
-            if (item.zhuanTai.tai=="审核通过") {
+            if (item.zhuanTai.tai == "审核通过") {
                 del_btn.prop('disabled', true);
                 edit_btn.prop('disabled', true);
             }
-            if (item.zhuanTai.tai=="审核未通过") {
+            if (item.zhuanTai.tai == "审核未通过") {
                 del_btn.prop('disabled', true);
                 edit_btn.prop('disabled', true);
             }
@@ -308,7 +312,6 @@
             tr.appendTo($("#rj_table"))
         })
     }
-
     //分页信息
     function page_pageInfo_(data) {
         $("#page_pageInfo").empty();
@@ -317,7 +320,6 @@
         $("#page_pageInfo").append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当前是第 " + rjPageInfo.pageNum + " 页   " + rjPageInfo.pageNum + "/" + rjPageInfo.pages + " 页    共 " + rjPageInfo.total + "条信息");
 
     }
-
     // 页码
     function buid_RJlist(data) {
         $(".pagination").empty();
@@ -367,21 +369,17 @@
         ul.append(lastLi);
 
     }
-
     //生成 li
     function creatLi(str) {
 
         return $("<li></li>").append($("<a></a>").attr("herf", "#").append(str));
     }
-
     //生成 li点击事件
     function creatClick(obj, pn) {
         obj.click(function () {
             getPageNums(pn)
         })
     }
-
-
     //修改软件状态为通过
     $(document).on("click", ".edit_btn", function () {
         //保存当前页码
@@ -389,18 +387,18 @@
 
         //根据 ID 查询图书信息
         $.ajax({
-            url: "${APP_PATH}/ruanjian/"+$(this).attr("data-id"),
+            url: "${APP_PATH}/ruanjian/" + $(this).attr("data-id"),
             type: "GET",
             success: function (data) {
                 if (data.code == 200) {
 
                     alert("审核通过")
                     getPageNums(p)
-                }else if (data.code == 100) {
+                } else if (data.code == 100) {
 
                     alert("系统错误，请重新审核")
                     getPageNums(p)
-                }else {
+                } else {
                     console.log(data)
                     alert("系统错误，请重新审核")
                 }
@@ -415,17 +413,17 @@
         var p = $(this).attr("data-pn");
         //根据 ID 查询图书信息
         $.ajax({
-            url: "${APP_PATH}/rj/"+$(this).attr("data-id"),
+            url: "${APP_PATH}/rj/" + $(this).attr("data-id"),
             type: "GET",
             success: function (data) {
                 if (data.code == 200) {
 
                     alert("审核通过")
                     getPageNums(p)
-                }else if (data.code == 100) {
+                } else if (data.code == 100) {
                     alert("系统错误，请重新审核")
                     getPageNums(p)
-                }else {
+                } else {
                     console.log(data)
                     alert("系统错误，请重新审核")
                 }
@@ -433,7 +431,6 @@
 
         })
     })
-
     //根据 id 查看软件信息
     $(document).on("click", ".eyes_btn", function () {
         //保存当前页码
@@ -446,11 +443,11 @@
 
         //根据 ID 查询图书信息
         $.ajax({
-            url: "${APP_PATH}/ruanJ/"+ $(this).attr("data-id"),
+            url: "${APP_PATH}/ruanJ/" + $(this).attr("data-id"),
             method: "GET",
             success: function (data) {
                 console.log(data);
-                var rj =data.returnData.ruanJian;//后端将数据放进了Model，然后前端从中获取数据;
+                var rj = data.returnData.ruanJian;//后端将数据放进了Model，然后前端从中获取数据;
 
                 console.log(rj);
                 $("#edit_id").text(rj.id);
@@ -470,8 +467,7 @@
 
         })
     })
-
-//软件历史信息
+    //软件历史信息
     $(document).on("click", ".his_btn", function () {
         $("#histroyModal").modal({
             backdrop: "static",
@@ -480,11 +476,11 @@
 
         //根据 ID 查询相对应的软件历史信息
         $.ajax({
-            url: "${APP_PATH}/histry/"+ $(this).attr("data-id"),
+            url: "${APP_PATH}/histry/" + $(this).attr("data-id"),
             method: "GET",
             success: function (data) {
                 console.log(data);
-                var hisrj =data.returnData.histroryRJS;
+                var hisrj = data.returnData.histroryRJS;
                 console.log(hisrj)
                 $.each(hisrj, function (index, item) {
                     //构建 td 存放数据
@@ -495,7 +491,7 @@
                     var hiskaifaze_td = $("<td></td>").append(item.user.userName);
                     var hisbbH_td = $("<td></td>").append(item.bbH);
                     var hisappDetail_td = $("<td></td>").append(item.appDetail);
-                    var hisLuJin_td = $("<td></td>").append($("<button></butten>").append($("<a></a>").attr("herf","#").append(item.luJin))).addClass("overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
+                    var hisLuJin_td = $("<td></td>").append($("<button></butten>").append($("<a></a>").attr("herf", "#").append(item.luJin))).addClass("overflow: scroll; text-overflow:ellipsis;white-space: nowrap;");
 
                     //将4个td 放入一个tr里
                     var tr = $("<tr></tr>")
@@ -514,7 +510,7 @@
             }
         })
     })
-
+    // 搜索
     function myFunction() {
         // 声明变量
         var input, filter, table, tr, td, i;
@@ -525,7 +521,8 @@
 
         // 循环表格每一行，查找匹配项
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
+            //只能搜索当前页面显示的内容
+            td = tr[i].getElementsByTagName("td")[1];
             if (td) {
                 if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                     tr[i].style.display = "";

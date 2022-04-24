@@ -61,7 +61,7 @@ public class UserController {
 
         HttpSession session = request.getSession();
         User user1 = userService.selectUser(user);
-        session.setAttribute("kaifazId",user1.getId());
+        session.setAttribute("kaifazId", user1.getId());
         System.out.println(user1.getId());
 
         if (user1 != null) {
@@ -77,17 +77,17 @@ public class UserController {
         }
         return "index";
     }
+
     @ResponseBody
     @PostMapping("/getuser")
     public Map getUseer(User user, HttpServletRequest request) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-       Object userid =  session.getAttribute("kaifazId");
-       Map<String,Object> restUser=new HashMap<String, Object>();
-        restUser.put("userid",userid);
+        Object userid = session.getAttribute("kaifazId");
+        Map<String, Object> restUser = new HashMap<String, Object>();
+        restUser.put("userid", userid);
         return restUser;
     }
-
 
 
 }

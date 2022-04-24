@@ -22,7 +22,7 @@ public class UploadFileUtils {
         //获取文件后缀名
         String tmpName = fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length());
         //文件后缀名的 数组
-        String[] imgArray = {"jpg", "gif", "bmp","doc","docx","zip","txt", "png", "jpeg"};
+        String[] imgArray = {"jpg", "gif", "bmp", "doc", "docx", "zip", "txt", "png", "jpeg"};
 
         b = Arrays.asList(imgArray).contains(tmpName);
 
